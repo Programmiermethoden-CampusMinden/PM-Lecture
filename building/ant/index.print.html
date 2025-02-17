@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="de-DE" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.135.0">
+    <meta name="generator" content="Relearn 6.4.1">
+    <meta name="description" content="Automatisieren von Arbeitsabläufen Works on my machine ...
+Build-Tools:
+Apache Ant Apache Maven Gradle Aufgaben:
+Übersetzen des Quellcodes Ausführen der Unit-Tests Generieren der Dokumentation Packen der Distribution Aufräumen temporärer Dateien ... =&gt; Automatisieren mit Apache Ant: ant.apache.org
+Aufbau von Ant-Skripten: Projekte und Targets &lt;project name=&#34;Vorlesung&#34; default=&#34;clean&#34; basedir=&#34;.&#34;&gt; &lt;target name=&#34;init&#34; /&gt; &lt;target name=&#34;compile&#34; depends=&#34;init&#34; /&gt; &lt;target name=&#34;test&#34; depends=&#34;compile&#34; /&gt; &lt;target name=&#34;dist&#34; depends=&#34;compile,test&#34; /&gt; &lt;target name=&#34;clean&#34; /&gt; &lt;/project&gt; Ein Hauptziel: project Ein oder mehrere Teilziele: target Abhängigkeiten der Teilziele untereinander möglich: depends Vorbedingung für Targets mit if oder unless Aufgaben erledigen: Tasks Tasks: Aufgaben bzw. Befehle (&#34;Methodenaufruf&#34;), in Targets auszuführen Struktur: &lt;taskname attr1=&#34;value1&#34; attr2=&#34;value2&#34; /&gt; &lt;target name=&#34;simplecompile&#34; depends=&#34;clean,init&#34;&gt; &lt;javac srcdir=&#34;src&#34; destdir=&#34;build&#34; classpath=&#34;.&#34; /&gt; &lt;/target&gt; Beispiele: echo, javac, jar, javadoc, junit, ... Je Target mehrere Tasks möglich Quellen: Eingebaute Tasks Optionale Task-Bibliotheken Selbst definierte Tasks =&gt; Überblick: ant.apache.org/manual/tasksoverview.html">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Build-Systeme: Apache Ant">
+    <meta name="twitter:description" content="Automatisieren von Arbeitsabläufen Works on my machine ...
+Build-Tools:
+Apache Ant Apache Maven Gradle Aufgaben:
+Übersetzen des Quellcodes Ausführen der Unit-Tests Generieren der Dokumentation Packen der Distribution Aufräumen temporärer Dateien ... =&gt; Automatisieren mit Apache Ant: ant.apache.org
+Aufbau von Ant-Skripten: Projekte und Targets &lt;project name=&#34;Vorlesung&#34; default=&#34;clean&#34; basedir=&#34;.&#34;&gt; &lt;target name=&#34;init&#34; /&gt; &lt;target name=&#34;compile&#34; depends=&#34;init&#34; /&gt; &lt;target name=&#34;test&#34; depends=&#34;compile&#34; /&gt; &lt;target name=&#34;dist&#34; depends=&#34;compile,test&#34; /&gt; &lt;target name=&#34;clean&#34; /&gt; &lt;/project&gt; Ein Hauptziel: project Ein oder mehrere Teilziele: target Abhängigkeiten der Teilziele untereinander möglich: depends Vorbedingung für Targets mit if oder unless Aufgaben erledigen: Tasks Tasks: Aufgaben bzw. Befehle (&#34;Methodenaufruf&#34;), in Targets auszuführen Struktur: &lt;taskname attr1=&#34;value1&#34; attr2=&#34;value2&#34; /&gt; &lt;target name=&#34;simplecompile&#34; depends=&#34;clean,init&#34;&gt; &lt;javac srcdir=&#34;src&#34; destdir=&#34;build&#34; classpath=&#34;.&#34; /&gt; &lt;/target&gt; Beispiele: echo, javac, jar, javadoc, junit, ... Je Target mehrere Tasks möglich Quellen: Eingebaute Tasks Optionale Task-Bibliotheken Selbst definierte Tasks =&gt; Überblick: ant.apache.org/manual/tasksoverview.html">
+    <meta property="og:url" content="https://www.hsbi.de/elearning/data/FH-Bielefeld/lm_data/lm_1359639/building/ant.html">
+    <meta property="og:title" content="Build-Systeme: Apache Ant">
+    <meta property="og:description" content="Automatisieren von Arbeitsabläufen Works on my machine ...
+Build-Tools:
+Apache Ant Apache Maven Gradle Aufgaben:
+Übersetzen des Quellcodes Ausführen der Unit-Tests Generieren der Dokumentation Packen der Distribution Aufräumen temporärer Dateien ... =&gt; Automatisieren mit Apache Ant: ant.apache.org
+Aufbau von Ant-Skripten: Projekte und Targets &lt;project name=&#34;Vorlesung&#34; default=&#34;clean&#34; basedir=&#34;.&#34;&gt; &lt;target name=&#34;init&#34; /&gt; &lt;target name=&#34;compile&#34; depends=&#34;init&#34; /&gt; &lt;target name=&#34;test&#34; depends=&#34;compile&#34; /&gt; &lt;target name=&#34;dist&#34; depends=&#34;compile,test&#34; /&gt; &lt;target name=&#34;clean&#34; /&gt; &lt;/project&gt; Ein Hauptziel: project Ein oder mehrere Teilziele: target Abhängigkeiten der Teilziele untereinander möglich: depends Vorbedingung für Targets mit if oder unless Aufgaben erledigen: Tasks Tasks: Aufgaben bzw. Befehle (&#34;Methodenaufruf&#34;), in Targets auszuführen Struktur: &lt;taskname attr1=&#34;value1&#34; attr2=&#34;value2&#34; /&gt; &lt;target name=&#34;simplecompile&#34; depends=&#34;clean,init&#34;&gt; &lt;javac srcdir=&#34;src&#34; destdir=&#34;build&#34; classpath=&#34;.&#34; /&gt; &lt;/target&gt; Beispiele: echo, javac, jar, javadoc, junit, ... Je Target mehrere Tasks möglich Quellen: Eingebaute Tasks Optionale Task-Bibliotheken Selbst definierte Tasks =&gt; Überblick: ant.apache.org/manual/tasksoverview.html">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Build-Systeme: Apache Ant">
+    <meta itemprop="description" content="Automatisieren von Arbeitsabläufen Works on my machine ...
+Build-Tools:
+Apache Ant Apache Maven Gradle Aufgaben:
+Übersetzen des Quellcodes Ausführen der Unit-Tests Generieren der Dokumentation Packen der Distribution Aufräumen temporärer Dateien ... =&gt; Automatisieren mit Apache Ant: ant.apache.org
+Aufbau von Ant-Skripten: Projekte und Targets &lt;project name=&#34;Vorlesung&#34; default=&#34;clean&#34; basedir=&#34;.&#34;&gt; &lt;target name=&#34;init&#34; /&gt; &lt;target name=&#34;compile&#34; depends=&#34;init&#34; /&gt; &lt;target name=&#34;test&#34; depends=&#34;compile&#34; /&gt; &lt;target name=&#34;dist&#34; depends=&#34;compile,test&#34; /&gt; &lt;target name=&#34;clean&#34; /&gt; &lt;/project&gt; Ein Hauptziel: project Ein oder mehrere Teilziele: target Abhängigkeiten der Teilziele untereinander möglich: depends Vorbedingung für Targets mit if oder unless Aufgaben erledigen: Tasks Tasks: Aufgaben bzw. Befehle (&#34;Methodenaufruf&#34;), in Targets auszuführen Struktur: &lt;taskname attr1=&#34;value1&#34; attr2=&#34;value2&#34; /&gt; &lt;target name=&#34;simplecompile&#34; depends=&#34;clean,init&#34;&gt; &lt;javac srcdir=&#34;src&#34; destdir=&#34;build&#34; classpath=&#34;.&#34; /&gt; &lt;/target&gt; Beispiele: echo, javac, jar, javadoc, junit, ... Je Target mehrere Tasks möglich Quellen: Eingebaute Tasks Optionale Task-Bibliotheken Selbst definierte Tasks =&gt; Überblick: ant.apache.org/manual/tasksoverview.html">
+    <meta itemprop="wordCount" content="993">
+    <title>Build-Systeme: Apache Ant</title>
+    <link href="https://www.hsbi.de/elearning/data/FH-Bielefeld/lm_data/lm_1359639/building/ant.html" rel="canonical" type="text/html" title="Build-Systeme: Apache Ant">
+
+    
+
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/images/logo.png?1739785062" rel="icon" type="image/png">
+
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/fontawesome-all.min.css?1739785062" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/fontawesome-all.min.css?1739785062" rel="stylesheet"></noscript>
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/nucleus.css?1739785062" rel="stylesheet">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/auto-complete.css?1739785062" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/auto-complete.css?1739785062" rel="stylesheet"></noscript>
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/perfect-scrollbar.min.css?1739785062" rel="stylesheet">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/fonts.css?1739785062" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/fonts.css?1739785062" rel="stylesheet"></noscript>
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/theme.css?1739785062" rel="stylesheet">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/theme-auto.css?1739785062" rel="stylesheet" id="R-variant-style">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/chroma-auto.css?1739785062" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/variant.css?1739785062" rel="stylesheet">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/print.css?1739785062" rel="stylesheet" media="print">
+    <link href="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/css/format-print.css?1739785062" rel="stylesheet">
+    <script src="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/js/variant.js?1739785062"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..\/..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/www.hsbi.de\/elearning\/data\/FH-Bielefeld\/lm_data\/lm_1359639';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.index_js_url="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/index.search.js?1739785062";
+      // variant stuff
+      window.variants && variants.init( [ 'auto', 'zen-light', 'zen-dark', 'relearn-bright', 'relearn-light', 'relearn-dark' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script><style type="text/css">
+
+ 
+.center {
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+.alert {
+    color: #ff3333;
+}
+.bsp {
+    padding: 0.05cm;
+    border-width: 0.05cm;
+    border-style: solid;
+    border-color: #ddd;
+    background-color: #ddd;
+    border-radius: 25px;
+    float: right;
+}
+.cbox {
+    padding: 0.2cm;
+    border-width: 0.1cm;
+    border-style: solid;
+    border-color: #4070a0;
+    background-color: #f2f2f2;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    overflow: auto;
+}
+.blueArrow {
+    color: #4070a0;
+    font-family: "Courier New", "Courier", monospace;
+    font-weight: bold;
+}
+.origin {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+.showme {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+
+
+ 
+.tldr {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.recap {
+    
+    
+   margin: 4px 0px 26px 0px;
+}
+.bib {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.outcomes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.quizzes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.challenges {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.assignments {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+h1.tldr, h1.recap, h1.bib, h1.outcomes, h1.quizzes, h1.challenges, h1.assignments {
+    padding: 0px;
+}
+
+
+ 
+.noJsAlert {
+    padding: 20px;
+    background-color: #f44336;  
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+ 
+.embed-video-player {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+    overflow: hidden;
+}
+.youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border:0;
+}
+
+
+ 
+#header-wrapper {
+    padding:0.6rem;
+}
+
+
+ 
+#shortcuts {
+    padding-top: 2.0rem;
+}
+
+
+ 
+#chapter p {
+    text-align: left;
+}
+
+
+ 
+figcaption h4 {
+    margin-top:-2.5rem;
+}
+.border1 {
+    border:1px solid black;
+}
+
+ 
+td ul, td ol {
+    margin: 0 0 1rem 0.5rem;
+    padding: 0 0 0 0.5rem;
+}
+
+ 
+h1 { font-size:2.8rem !important;}
+h2 { font-size:2.2rem; margin:1.2rem 0}
+h3 { font-size:1.9rem; text-align:left !important; font-weight:400 !important;}
+h4 { font-size:1.6rem}
+h5 { font-size:1.3rem}
+h6 { font-size:1rem}
+
+h2 {
+    width:100% !important;
+    border-bottom:1px solid #5e5e5e !important;
+    padding-bottom: 2px;
+}
+.tldr h2, .recap h2, .bib h2, .outcomes h2, .quizzes h2, .challenges h2, .assignments h2 {
+    margin:0.5rem 0
+}
+
+.btn-crossreference, .btn-crossreference:hover {
+    cursor: initial;
+}
+
+</style>
+
+  </head>
+  <body class="mobile-support print disableInlineCopyToClipboard" data-url="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/building/ant.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+          </div>
+          <span class="topbar-breadcrumbs highlightable">
+            Build-Systeme: Apache Ant
+          </span>
+          <div class="topbar-area topbar-area-end" data-area="end">
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable " tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+<h1>Build-Systeme: Apache Ant</h1>
+
+
+
+    
+
+
+
+    
+
+    <div class="box notices cstyle info">
+  <div class="box-label">
+    <i class="fas fa-graduation-cap"></i> TL;DR
+  </div>
+  <div class="box-content">
+<p>Zum Automatisieren von Arbeitsabläufen (Kompilieren, Testen, ...) stehen in der Java-Welt
+verschiedene Tools zur Verfügung: Apache Ant, Apache Maven und Gradle sind sicher die am
+bekanntesten darunter.</p>
+<p>In Apache Ant werden die Build-Skripte in XML definiert. Die äußere Klammer ist dabei das
+<code>&lt;project&gt;</code>. In einem Projekt kann es ein oder mehrere Teilziele (<em>Targets</em>) geben, die
+untereinander abhängig sein können. Die Targets können quasi &quot;aufgerufen&quot; werden bzw. in
+der IDE selektiert und gestartet werden.</p>
+<p>In einem Target kann man schließlich mit <em>Tasks</em> Aufgaben wie Kompilieren, Testen, Aufräumen,
+... erledigen lassen. Dazu gibt es eine breite Palette an vordefinierten Tasks. Zusätzlich
+sind umfangreiche Operationen auf dem Filesystem möglich (Ordner erstellen, löschen, Dinge
+kopieren, ...).</p>
+<p>Über <em>Properties</em> können Werte und Namen definiert werden, etwa für bestimmte Ordner. Die
+Properties sind unveränderliche Variablen (auch wenn man sie im Skript scheinbar neu setzen
+kann).</p>
+<p>Über Apache Ivy können analog zu Maven und Gradle definierte Abhängigkeiten aus Maven-Central
+aufgelöst werden.</p>
+<p>Im Unterschied zu Maven und Gradle ist in Ant <em>kein</em> Java-Entwicklungsmodell eingebaut. Man
+muss sämtliche Targets selbst definieren.</p>
+  </div>
+</div>
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+    
+
+    <div class="box notices cstyle info">
+  <div class="box-label">
+    <i class="fas fa-podcast"></i> Videos (YouTube)
+  </div>
+  <div class="box-content">
+<ul> <li><a href='https://youtu.be/LRA1PeQ2pR0' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>VL Apache Ant</a></li> <li><a href='https://youtu.be/EnAQOU_zL1M' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>Demo Aufruf von Ant (Konsole, IDE: hello.xml)</a></li> <li><a href='https://youtu.be/ip8xFcSZC1c' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>Demo Properties, Targets, Dependencies (build.xml)</a></li> <li><a href='https://youtu.be/jizh0bi2TnU' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>Demo Abhängigkeiten mit Ivy auflösen (ivydemo.xml)</a></li></ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+    
+
+    <div class="box notices cstyle info">
+  <div class="box-label">
+    <i class="fas fa-podcast"></i> Videos (HSBI-Medienportal)
+  </div>
+  <div class="box-content">
+<ul> <li><a href='https://www.hsbi.de/medienportal/m/31f6228dac399ec8151484367499e975959f23e6ebaf61e1869b959f903aeea256af0c2cdca66bf249862deebba48e660107feb880267017b798e0b1ee10870f' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>VL Apache Ant</a></li></ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+
+    
+
+    
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+    
+
+    <div class="box notices cstyle tip">
+  <div class="box-label">
+    <i class="fas fa-lightbulb"></i> Lernziele
+  </div>
+  <div class="box-content">
+<ul> <li>(K3) Schreiben einfacher Ant-Skripte mit Abhängigkeiten zwischen den Targets</li> <li>(K3) Nutzung von Ant-Filesets (Dateisystemoperationen, Classpath)</li> <li>(K3) Nutzung von Ant-Properties</li> <li>(K3) Ausführen von Ant-Targets aus der IDE heraus</li></ul>
+  </div>
+</div>
+
+
+
+
+    <h2 id="automatisieren-von-arbeitsabläufen">Automatisieren von Arbeitsabläufen</h2>
+<div style="text-align:center;">
+<span class="badge cstyle primary"><span class="badge-content"><p>Works on my machine ...</p>
+</span></span>
+</div>
+<ul>
+<li>
+<p>Build-Tools:</p>
+<ul>
+<li><strong>Apache Ant</strong></li>
+<li>Apache Maven</li>
+<li>Gradle</li>
+</ul>
+</li>
+<li>
+<p>Aufgaben:</p>
+<ul>
+<li>Übersetzen des Quellcodes</li>
+<li>Ausführen der Unit-Tests</li>
+<li>Generieren der Dokumentation</li>
+<li>Packen der Distribution</li>
+<li>Aufräumen temporärer Dateien</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<p>=&gt; Automatisieren mit Apache Ant: <a href="https://ant.apache.org/" rel="external" target="_blank">ant.apache.org</a></p>
+<h2 id="aufbau-von-ant-skripten-projekte-und-targets">Aufbau von Ant-Skripten: Projekte und Targets</h2>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Vorlesung&#34;</span> <span style="color:#a6e22e">default=</span><span style="color:#e6db74">&#34;clean&#34;</span> <span style="color:#a6e22e">basedir=</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;init&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;compile&#34;</span> <span style="color:#a6e22e">depends=</span><span style="color:#e6db74">&#34;init&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;test&#34;</span> <span style="color:#a6e22e">depends=</span><span style="color:#e6db74">&#34;compile&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;dist&#34;</span> <span style="color:#a6e22e">depends=</span><span style="color:#e6db74">&#34;compile,test&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;clean&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span></span></span></code></pre></div>
+<ul>
+<li>Ein Hauptziel: <code>project</code></li>
+<li>Ein oder mehrere Teilziele: <code>target</code>
+<ul>
+<li>Abhängigkeiten der Teilziele untereinander möglich: <code>depends</code></li>
+<li>Vorbedingung für Targets mit <code>if</code> oder <code>unless</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="aufgaben-erledigen-tasks">Aufgaben erledigen: Tasks</h2>
+<ul>
+<li><strong>Tasks</strong>: Aufgaben bzw. Befehle (&quot;Methodenaufruf&quot;), in Targets auszuführen</li>
+<li>Struktur: <code>&lt;taskname attr1=&quot;value1&quot; attr2=&quot;value2&quot; /&gt;</code></li>
+</ul>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;simplecompile&#34;</span> <span style="color:#a6e22e">depends=</span><span style="color:#e6db74">&#34;clean,init&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;javac</span> <span style="color:#a6e22e">srcdir=</span><span style="color:#e6db74">&#34;src&#34;</span> <span style="color:#a6e22e">destdir=</span><span style="color:#e6db74">&#34;build&#34;</span> <span style="color:#a6e22e">classpath=</span><span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<ul>
+<li>Beispiele: <code>echo</code>, <code>javac</code>, <code>jar</code>, <code>javadoc</code>, <code>junit</code>, ...</li>
+<li>Je Target mehrere Tasks möglich</li>
+<li>Quellen:
+<ul>
+<li>Eingebaute Tasks</li>
+<li>Optionale Task-Bibliotheken</li>
+<li>Selbst definierte Tasks</li>
+</ul>
+</li>
+</ul>
+<p>=&gt; Überblick: <a href="https://ant.apache.org/manual/tasksoverview.html" rel="external" target="_blank">ant.apache.org/manual/tasksoverview.html</a></p>
+<div style="text-align: right;"><span class="btn cstyle interactive default"><a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/markdown/building/src/ant/hello.xml" target="_blank"><span class="title">Konsole/IDE: ant -f hello.xml</span></a></span></div>
+<h2 id="properties-name-wert-paare">Properties: Name-Wert-Paare</h2>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;app&#34;</span>       <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;MyProject&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;build.dir&#34;</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;build&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;init&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mkdir</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${build.dir}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<ul>
+<li>
+<p>Setzen von Eigenschaften: <code>&lt;property name=&quot;wuppie&quot; value=&quot;fluppie&quot; /&gt;</code></p>
+<ul>
+<li>Properties lassen sich nur einmal setzen (&quot;immutable&quot;)
+<ul>
+<li>Erneute Definition ist wirkungslos, erzeugt aber leider keinen Fehler</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Nutzung von Properties: <code>&lt;property name=&quot;db&quot; value=&quot;${wuppie}.db&quot; /&gt;</code></p>
+</li>
+<li>
+<p>Pfade: &quot;<code>location</code>&quot; statt &quot;<code>value</code>&quot; nutzen:
+<code>&lt;property name=&quot;ziel&quot; location=&quot;${p}/bla/blub&quot; /&gt;</code></p>
+</li>
+<li>
+<p>Properties beim Aufruf setzen mit Option &quot;<code>-D</code>&quot;:
+<code>ant -Dwuppie=fluppie</code></p>
+</li>
+</ul>
+<div style="text-align: right;"><span class="btn cstyle interactive default"><a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/markdown/building/src/ant/build.xml" target="_blank"><span class="title">Beispiel build.xml, Properties</span></a></span></div>
+<h2 id="tasks-zum-umgang-mit-dateien-und-ordnern">Tasks zum Umgang mit Dateien und Ordnern</h2>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;demo&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mkdir</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${build.dir}/lib&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;delete</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${build.dir}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;delete</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;${dist.dir}/wuppie.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;copy</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;myfile.txt&#34;</span> <span style="color:#a6e22e">tofile=</span><span style="color:#e6db74">&#34;../bak/mycopy.txt&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;move</span> <span style="color:#a6e22e">file=</span><span style="color:#e6db74">&#34;src/file.orig&#34;</span> <span style="color:#a6e22e">tofile=</span><span style="color:#e6db74">&#34;bak/file.moved&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<ul>
+<li><code>&lt;mkdir dir=&quot;${dist}/lib&quot; /&gt;</code>
+<ul>
+<li>Legt auch direkte Unterverzeichnisse an</li>
+<li>Keine Aktion, falls Verzeichnis existiert</li>
+</ul>
+</li>
+<li><code>&lt;delete dir=&quot;${builddir}&quot; /&gt;</code>
+<ul>
+<li>Löscht eine Datei (&quot;<code>file</code>&quot;) oder ein Verzeichnis (&quot;<code>dir</code>&quot;) (rekursiv!)</li>
+</ul>
+</li>
+<li><code>&lt;copy file=&quot;myfile.txt&quot; tofile=&quot;../bak/mycopy.txt&quot; /&gt;</code></li>
+<li><code>&lt;move file=&quot;src/file.orig&quot; tofile=&quot;bak/file.moved&quot; /&gt;</code></li>
+</ul>
+<div style="text-align: right;"><span class="btn cstyle interactive default"><a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/markdown/building/src/ant/build.xml" target="_blank"><span class="title">Beispiel build.xml, init und clean</span></a></span></div>
+<h2 id="nutzung-von-filesets-in-tasks">Nutzung von Filesets in Tasks</h2>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;copy</span> <span style="color:#a6e22e">todir=</span><span style="color:#e6db74">&#34;archive&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;src&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;**/*.java&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;exclude</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;**/*.ba?&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/fileset&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/copy&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;delete&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#a6e22e">includes=</span><span style="color:#e6db74">&#34;**/*.ba?&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/delete&gt;</span></span></span></code></pre></div>
+<ul>
+<li>&quot;<code>*</code>&quot; für beliebig viele Zeichen</li>
+<li>&quot;<code>?</code>&quot; für genau ein Zeichen</li>
+<li>&quot;<code>**</code>&quot; alle Unterverzeichnisse</li>
+</ul>
+<p>Es gibt auch die Variante <code>&lt;dirset dir=&quot;...&quot;&gt;</code>, um Verzeichnisse zu
+gruppieren.</p>
+<h2 id="pfade-und-externe-bibliotheken">Pfade und externe Bibliotheken</h2>
+<ul>
+<li>
+<p>Als Element direkt im Task:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;classpath&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;${lib}/helper.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;${project.classpath}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/classpath&gt;</span></span></span></code></pre></div>
+<p>D.h. die Einbettung in den <code>javac</code>-Task würde etwa so erfolgen:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;javac</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;classpath&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;${lib}/helper.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;${project.classpath}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/classpath&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/javac&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<p><em>Anmerkung</em>: Neben dem <code>pathelement</code> können Sie hier auch (wie im nächsten
+Beispiel gezeigt) ein oder mehrere <code>fileset</code> nutzen.</p>
+</li>
+<li>
+<p>Wiederverwendbar durch ID und &quot;<code>refid</code>&quot;:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;path</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;java.class.path&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${lib}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;**/*.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/fileset&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;classpath</span> <span style="color:#a6e22e">refid=</span><span style="color:#e6db74">&#34;java.class.path&#34;</span> <span style="color:#f92672">/&gt;</span></span></span></code></pre></div>
+<p>Die Einbettung in den <code>javac</code>-Task würde hier etwa so erfolgen:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;path</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;java.class.path&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${lib}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;**/*.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/fileset&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;javac</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;classpath</span> <span style="color:#a6e22e">refid=</span><span style="color:#e6db74">&#34;java.class.path&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/javac&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<p><em>Anmerkung</em>: Neben dem <code>fileset</code> können Sie hier auch (wie oben gezeigt)
+ein oder mehrere <code>pathelement</code> nutzen.</p>
+</li>
+</ul>
+<p><em>Anmerkung</em>: Laut <a href="https://ant.apache.org/manual/Tasks/junit.html" rel="external" target="_blank">ant.apache.org/manual/Tasks/junit.html</a>
+benötigt man neben der aktuellen <code>junit.jar</code> noch die <code>ant-junit.jar</code> im Classpath, um mit dem <code>junit</code>-Ant-Task
+entsprechende JUnit4-Testfälle ausführen zu können.</p>
+<p>Für JUnit5 gibt es einen neuen Task <code>JUnitLauncher</code> (vgl.
+<a href="https://ant.apache.org/manual/Tasks/junitlauncher.html" rel="external" target="_blank">ant.apache.org/manual/Tasks/junitlauncher.html</a>).</p>
+<h2 id="beispiele">Beispiele</h2>
+<h3 id="beispiel-task-kompilieren">Beispiel-Task: Kompilieren</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;path</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;project.classpath&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${lib.dir}&#34;</span> <span style="color:#a6e22e">includes=</span><span style="color:#e6db74">&#34;**/*.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;compile&#34;</span> <span style="color:#a6e22e">depends=</span><span style="color:#e6db74">&#34;init&#34;</span> <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;compile the source &#34;</span> <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;javac</span> <span style="color:#a6e22e">srcdir=</span><span style="color:#e6db74">&#34;${src.dir}&#34;</span> <span style="color:#a6e22e">destdir=</span><span style="color:#e6db74">&#34;${build.dir}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;classpath</span> <span style="color:#a6e22e">refid=</span><span style="color:#e6db74">&#34;project.classpath&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/javac&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<h3 id="beispiel-task-packen">Beispiel-Task: Packen</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;dist&#34;</span> <span style="color:#a6e22e">depends=</span><span style="color:#e6db74">&#34;compile&#34;</span> <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;generate the distribution&#34;</span> <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mkdir</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${dist.dir}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;jar</span> <span style="color:#a6e22e">jarfile=</span><span style="color:#e6db74">&#34;${dist.dir}/${app}.jar&#34;</span> <span style="color:#a6e22e">basedir=</span><span style="color:#e6db74">&#34;${build.dir}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;manifest&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;attribute</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Main-Class&#34;</span>  <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${app}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/manifest&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/jar&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<h3 id="beispiel-task-testen">Beispiel-Task: Testen</h3>
+<ul>
+<li>
+<p>Tests einer Testklasse ausführen:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;junit&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;test</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;my.test.TestCase&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/junit&gt;</span></span></span></code></pre></div>
+</li>
+<li>
+<p>Test ausführen und XML mit Ergebnissen erzeugen:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;junit</span> <span style="color:#a6e22e">printsummary=</span><span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#a6e22e">fork=</span><span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#a6e22e">haltonfailure=</span><span style="color:#e6db74">&#34;yes&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;formatter</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;xml&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;test</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;my.test.TestCase&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/junit&gt;</span></span></span></code></pre></div>
+</li>
+<li>
+<p>Verschiedene Tests als Batch ausführen:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;junit</span> <span style="color:#a6e22e">printsummary=</span><span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#a6e22e">haltonfailure=</span><span style="color:#e6db74">&#34;yes&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;classpath&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;${build.tests}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;${java.class.path}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/classpath&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;formatter</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;plain&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;test</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;my.test.TestCase&#34;</span> <span style="color:#a6e22e">haltonfailure=</span><span style="color:#e6db74">&#34;no&#34;</span> <span style="color:#a6e22e">outfile=</span><span style="color:#e6db74">&#34;result&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;formatter</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;xml&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/test&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;batchtest</span> <span style="color:#a6e22e">fork=</span><span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#a6e22e">todir=</span><span style="color:#e6db74">&#34;${reports.tests}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;${src.tests}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;**/*Test*.java&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;exclude</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;**/AllTests.java&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/fileset&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/batchtest&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/junit&gt;</span></span></span></code></pre></div>
+</li>
+<li>
+<p>Aus Testergebnis (XML) einen Report generieren:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;junitreport</span> <span style="color:#a6e22e">todir=</span><span style="color:#e6db74">&#34;${reportdir}&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fileset</span> <span style="color:#a6e22e">dir=</span><span style="color:#e6db74">&#34;...&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;TEST-*.xml&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/fileset&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;report</span> <span style="color:#a6e22e">format=</span><span style="color:#e6db74">&#34;frames&#34;</span> <span style="color:#a6e22e">todir=</span><span style="color:#e6db74">&#34;...&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/junitreport&gt;</span></span></span></code></pre></div>
+</li>
+<li>
+<p>Abbruch bei Fehler:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;junit</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#a6e22e">failureproperty=</span><span style="color:#e6db74">&#34;tests.failed&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;fail</span> <span style="color:#a6e22e">if=</span><span style="color:#e6db74">&#34;tests.failed&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/junit&gt;</span></span></span></code></pre></div>
+</li>
+</ul>
+<p>=&gt; <code>junit.jar</code> und <code>ant-junit.jar</code> (JUnit4.x) im Pfad!</p>
+<h3 id="programme-ausführen">Programme ausführen</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;run&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;java</span> <span style="color:#a6e22e">jar=</span><span style="color:#e6db74">&#34;build/jar/HelloWorld.jar&#34;</span> <span style="color:#a6e22e">fork=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">classname =</span><span style="color:#e6db74">&#34;test.Main&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;arg</span> <span style="color:#a6e22e">value =</span><span style="color:#e6db74">&#34;-h&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;classpath&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;pathelement</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;./lib/test.jar&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/ classpath&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/ java&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/target&gt;</span></span></span></code></pre></div>
+<h2 id="ausblick-laden-von-abhängigkeiten-mit-apache-ivy">Ausblick: Laden von Abhängigkeiten mit Apache Ivy</h2>
+<p><a href="https://ant.apache.org/ivy/" rel="external" target="_blank">Apache Ivy</a>: Dependency Manager für Ant</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- build.xml --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns:ivy=</span><span style="color:#e6db74">&#34;antlib:org.apache.ivy.ant&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;target</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;resolve&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;ivy:retrieve/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/target&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span></span></span></code></pre></div>
+<p>Wenn Ivy installiert ist, kann man durch den Eintrag <code>xmlns:ivy=&quot;antlib:org.apache.ivy.ant&quot;</code>
+in der Projekt-Deklaration im Ant-Skript die Ivy-Tasks laden. Der wichtigste Task ist dabei
+<code>ivy:retrieve</code>, mit dem externe Projektabhängigkeiten heruntergeladen werden können.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- ivy.xml --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;ivy-module</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;2.0&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;dependency</span> <span style="color:#a6e22e">org=</span><span style="color:#e6db74">&#34;commons-cli&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;commons-cli&#34;</span> <span style="color:#a6e22e">rev=</span><span style="color:#e6db74">&#34;1.5.0&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;dependency</span> <span style="color:#a6e22e">org=</span><span style="color:#e6db74">&#34;junit&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;junit&#34;</span> <span style="color:#a6e22e">rev=</span><span style="color:#e6db74">&#34;4.13.2&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/ivy-module&gt;</span></span></span></code></pre></div>
+<p>Zur Steuerung von Ivy legt man eine weitere Datei <code>ivy.xml</code> an. Das Wurzelelement ist <code>ivy-module</code>,
+wobei die <code>version</code> die niedrigste kompatible Ivy-Version angibt.</p>
+<p>Der <code>dependencies</code>-Abschnitt definiert dann die Abhängigkeiten, die Ivy auflösen muss. Die Schreibweise
+ist dabei wie im Maven2 Repository (<a href="https://mvnrepository.com/" rel="external" target="_blank">mvnrepository.com</a>) angelegt. Dort
+findet man beispielsweise für Apache Commons CLI den Eintrag für Maven (&quot;POM&quot;-Datei):</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/commons-cli/commons-cli --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>commons-cli<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>commons-cli<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.4<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span></span></span></code></pre></div>
+<p>Für die Ivy-Konfiguration übernimmt man die <code>groupId</code> als <code>org</code>, die <code>artifactId</code> als <code>name</code> und die
+<code>version</code> als <code>rev</code> im Eintrag <code>dependency</code>.</p>
+<p>Damit kann Ivy diese Bibliothek über den Ant-Task <code>ivy:retrieve</code> vor dem Bauen herunterladen, sofern
+die Bibliothek noch nicht lokal vorhanden ist. Eventuelle Abhängigkeiten werden dabei ebenfalls aufgelöst.</p>
+<p>Im Detail: Der Ant-Task <code>ivy:retrieve</code> löst zunächst die Abhängigkeiten auf und lädt die Dateien (sofern
+sie noch nicht vorhanden oder veraltet sind) in den Ivy-Cache (per Default: <code>~/.ivy2/cache/</code>). Danach
+werden die Dateien in den Default-Library-Order im Projekt kopiert (per Defaul: <code>./lib/</code>). Die Ordner kann
+man über Optionen im <code>ivy:retrieve</code>-Task einstellen.</p>
+<div style="text-align: right;"><span class="btn cstyle interactive default"><a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/markdown/building/src/ant/ivydemo.xml" target="_blank"><span class="title">Demo: ivydemo.xml</span></a></span></div>
+<h2 id="ausblick-weitere-build-systeme">Ausblick: Weitere Build-Systeme</h2>
+<ul>
+<li>
+<p><a href="https://maven.apache.org/" rel="external" target="_blank">Maven</a></p>
+<ul>
+<li>War als Nachfolger von Ant gedacht</li>
+<li>Statt wie bei Ant explizit Targets zu formulieren, geht Maven
+von einem Standardprojekt aus - nur noch Abweichungen müssen
+formuliert werden</li>
+<li>Zieht Abhängigkeiten in zentralen <code>.maven</code>-Ordner</li>
+</ul>
+</li>
+<li>
+<p><a href="https://gradle.org/" rel="external" target="_blank">Gradle</a></p>
+<ul>
+<li>Eine Art Mischung aus Ant und Maven unter Nutzung der Sprache Groovy</li>
+</ul>
+</li>
+<li>
+<p><a href="https://www.gnu.org/software/make/" rel="external" target="_blank">Make</a></p>
+<ul>
+<li>DER Klassiker, stammt aus der C-Welt. Kann aber natürlich auch Java.</li>
+<li>Analog zu Ant: Aktionen und Ziele müssen explizit definiert werden</li>
+</ul>
+</li>
+</ul>
+<h2 id="wrap-up">Wrap-Up</h2>
+<p>Apache Ant: <a href="https://ant.apache.org/" rel="external" target="_blank">ant.apache.org</a></p>
+<ul>
+<li>Automatisieren von Arbeitsabläufen</li>
+<li>Apache Ant: Targets, Tasks, Properties
+<ul>
+<li>Targets sind auswählbare Teilziele</li>
+<li>Abhängigkeiten zwischen Targets möglich</li>
+<li>Tasks erledigen Aufgaben (innerhalb Targets)</li>
+<li>Properties sind nicht änderbare Variablen</li>
+<li>Umfangreiche Operationen auf Filesystem möglich</li>
+</ul>
+</li>
+</ul>
+
+
+    
+
+
+
+    
+    
+        
+        
+        
+            
+        
+    
+    
+
+    <div class="box notices cstyle tip">
+  <div class="box-label">
+    <i class="fas fa-user-check"></i> Quizzes
+  </div>
+  <div class="box-content">
+<ul> <li><a href='https://www.hsbi.de/elearning/goto.php?target=tst_1106214&client_id=FH-Bielefeld' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>Quiz Apache Ant (ILIAS)</a></li></ul>
+  </div>
+</div>
+
+
+
+    
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+    
+        
+        
+
+        
+            
+            
+            
+            
+            
+
+            
+            
+                
+                    
+                
+            
+            
+            
+            
+            
+            
+
+            
+            
+                
+            
+            
+                
+                
+                    
+                
+                
+            
+            
+                
+            
+            
+        
+    
+    
+
+    <div class="box notices cstyle info">
+  <div class="box-label">
+    <i class="fas fa-book-reader"></i> Quellen
+  </div>
+  <div class="box-content">
+<ul> <li id='id_Inden2013'>[Inden2013] <strong>Der Weg zum Java-Profi</strong><br>Inden, M., dpunkt.verlag, 2013. ISBN <a href='https://fhb-bielefeld.digibib.net/openurl?isbn=978-3-8649-1245-0' class='icon reading' target='_blank' rel='nofollow noopener noreferrer'>978-3-8649-1245-0</a>.<br><em>Abschnitt 2.5.2: Ant</em></li></ul>
+  </div>
+</div>
+
+
+
+
+
+
+<footer class="footline"><div style="color: darkgray; font-size: small;">
+<p style="margin-left: 4rem; margin-right: 4rem; margin-top: 6rem;">
+<!-- https://creativecommons.org/choose/ -->
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0;margin:0;display:inline;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+Unless otherwise noted, <a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture">this work</a> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://github.com/cagix" property="cc:attributionName" rel="cc:attributionURL">Carsten Gips</a> and <a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/graphs/contributors">contributors</a> is licensed under <a rel="license" href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/LICENSE.md">CC BY-SA 4.0</a>.
+See the <a href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/CREDITS.md">credits</a> for a detailed list of contributing projects.
+
+</p>
+</div>
+
+</footer>
+</article>
+
+        </div>
+      </main>
+    </div>
+    <script src="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/js/clipboard.min.js?1739785062" defer></script>
+    <script src="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/js/perfect-scrollbar.min.js?1739785062" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/js/mathjax/tex-mml-chtml.js?1739785062"></script>
+    <script src="/elearning/data/FH-Bielefeld/lm_data/lm_1359639/js/theme.js?1739785062" defer></script>
+  </body>
+</html>
