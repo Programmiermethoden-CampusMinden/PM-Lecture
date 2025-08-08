@@ -337,7 +337,7 @@ import static packageName.className.*;
 
 ::: outcomes
 -   k2: Ursachen von Softwarefehlern
--   k3: Aufbauen von Tests mit JUnit 4 und 5 unter Nutzung der Annotation @Test
+-   k3: Aufbauen von Tests mit JUnit 4 und 5 unter Nutzung der Annotation `@Test`
 :::
 
 ::: quizzes

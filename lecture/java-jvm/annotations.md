@@ -436,7 +436,7 @@ folgende Ausgabe:
 
 ::: outcomes
 -   k2: Begriff der Annotation erklären können am Beispiel
--   k3: Anwendung von @Override sowie der Javadoc-Annotationen
+-   k3: Anwendung von `@Override` sowie der Javadoc-Annotationen
 -   k3: Erstellen eigener Annotationen sowie Einstellen der Sichtbarkeit und Verwendbarkeit
 -   k3: Erstellen eigener einfacher Annotation-Processors
 :::
