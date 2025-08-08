@@ -206,7 +206,7 @@ Exception-Handling**! Hier sollte auf die jeweilige Situation eingegangen werden
 beheben oder dem Aufrufer geeignet zu melden!
 :::
 
-# \_Try_und mehrstufiges *Catch*
+# *Try* und mehrstufiges *Catch*
 
 ``` java
 try {
