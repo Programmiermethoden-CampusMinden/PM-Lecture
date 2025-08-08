@@ -153,14 +153,6 @@ Strategy-Pattern: Verhaltensänderung durch Delegation an passendes Objekt
 -   Zur Laufzeit Instanz dieser Klassen übergeben (Aggregation) ...
 -   ... und nutzen (Delegation)
 
-<!-- DO NOT REMOVE - THIS IS A LAST SLIDE TO INDICATE THE LICENSE AND POSSIBLE EXCEPTIONS (IMAGES, ...). -->
-
-::: slides
-# LICENSE
-
-Unless otherwise noted, this work is licensed under CC BY-SA 4.0.
-:::
-
 ::: readings
 -   @Eilebrecht2013
 -   @Gamma2011
