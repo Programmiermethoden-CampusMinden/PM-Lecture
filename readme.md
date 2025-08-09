@@ -128,19 +128,19 @@ Durchführung als **Flipped Classroom**: Alle Sitzungen online/per Zoom
 
 ## Praktikum
 
-| Woche | Blatt | Abgabe ILIAS und Peer-Feedback (ILIAS) | Vorstellung Praktikum |
-|:-----:|:------------------|:-----------------------------------------|:----------------|
-| 16 | [B01a](homework/b01a.md) | Abgabe: Do, 20.04., 08 Uhr; Peer-Feedback: Fr, 21.04., 08 Uhr | Praktikum: Fr, 21.04. |
-| 17 | [B01b](homework/b01b.md) | Abgabe: Do, 27.04., 08 Uhr; Peer-Feedback: Fr, 28.04., 08 Uhr | Praktikum: Fr, 28.04. |
-| 18 | [B02a](homework/b02a.md) | Abgabe: Do, 04.05., 08 Uhr; Peer-Feedback: Fr, 05.05., 08 Uhr | Praktikum: Fr, 05.05. |
-| 19 | [B02b](homework/b02b.md) | Abgabe: Do, 11.05., 08 Uhr; Peer-Feedback: Fr, 12.05., 08 Uhr | Praktikum: Fr, 12.05. |
-| 20 | [B03a](homework/b03a.md) | Abgabe: Do, 18.05., 08 Uhr; Peer-Feedback: Fr, 19.05., 08 Uhr | Praktikum: Fr, 19.05. |
-| 21 | [B03b](homework/b03b.md) | Abgabe: Do, 25.05., 08 Uhr; Peer-Feedback: Fr, 26.05., 08 Uhr | Praktikum: Fr, 26.05. |
-| 22 | [B04a](homework/b04a.md) | Abgabe: Do, 01.06., 08 Uhr; Peer-Feedback: Fr, 02.06., 08 Uhr | Praktikum: Fr, 02.06. |
-| 23 | [B04b](homework/b04b.md) | Abgabe: Do, 08.06., 08 Uhr; Peer-Feedback: Fr, 09.06., 08 Uhr | Praktikum: Fr, 09.06. |
-| 24 | [B05a](homework/b05a.md) | Abgabe: Do, 15.06., 08 Uhr; Peer-Feedback: Fr, 16.06., 08 Uhr | Praktikum: Fr, 16.06. |
-| 25 | [B05b](homework/b05b.md) | Abgabe: Do, 22.06., 08 Uhr; Peer-Feedback: Fr, 23.06., 08 Uhr | Praktikum: Fr, 23.06. |
-| 26 | [B06](homework/b06.md) | Abgabe: Fr, 30.06., 08 Uhr | Praktikum: Fr, 30.06. |
+| Woche | Blatt                    | Abgabe ILIAS und Peer-Feedback (ILIAS)                        | Vorstellung Praktikum |
+|:-----:|:-------------------------|:--------------------------------------------------------------|:----------------------|
+|  16   | [B01a](homework/b01a.md) | Abgabe: Do, 20.04., 08 Uhr; Peer-Feedback: Fr, 21.04., 08 Uhr | Praktikum: Fr, 21.04. |
+|  17   | [B01b](homework/b01b.md) | Abgabe: Do, 27.04., 08 Uhr; Peer-Feedback: Fr, 28.04., 08 Uhr | Praktikum: Fr, 28.04. |
+|  18   | [B02a](homework/b02a.md) | Abgabe: Do, 04.05., 08 Uhr; Peer-Feedback: Fr, 05.05., 08 Uhr | Praktikum: Fr, 05.05. |
+|  19   | [B02b](homework/b02b.md) | Abgabe: Do, 11.05., 08 Uhr; Peer-Feedback: Fr, 12.05., 08 Uhr | Praktikum: Fr, 12.05. |
+|  20   | [B03a](homework/b03a.md) | Abgabe: Do, 18.05., 08 Uhr; Peer-Feedback: Fr, 19.05., 08 Uhr | Praktikum: Fr, 19.05. |
+|  21   | [B03b](homework/b03b.md) | Abgabe: Do, 25.05., 08 Uhr; Peer-Feedback: Fr, 26.05., 08 Uhr | Praktikum: Fr, 26.05. |
+|  22   | [B04a](homework/b04a.md) | Abgabe: Do, 01.06., 08 Uhr; Peer-Feedback: Fr, 02.06., 08 Uhr | Praktikum: Fr, 02.06. |
+|  23   | [B04b](homework/b04b.md) | Abgabe: Do, 08.06., 08 Uhr; Peer-Feedback: Fr, 09.06., 08 Uhr | Praktikum: Fr, 09.06. |
+|  24   | [B05a](homework/b05a.md) | Abgabe: Do, 15.06., 08 Uhr; Peer-Feedback: Fr, 16.06., 08 Uhr | Praktikum: Fr, 16.06. |
+|  25   | [B05b](homework/b05b.md) | Abgabe: Do, 22.06., 08 Uhr; Peer-Feedback: Fr, 23.06., 08 Uhr | Praktikum: Fr, 23.06. |
+|  26   | [B06](homework/b06.md)   | Abgabe: Fr, 30.06., 08 Uhr                                    | Praktikum: Fr, 30.06. |
 
 # Prüfungsform, Note und Credits
 
