@@ -8,8 +8,8 @@ Das Verhalten von Klassen kann über Vererbungshierarchien weitergegeben und dur
 Überschreiben in den erbenden Klassen verändert werden. Dies führt häufig schnell zu
 breiten und tiefen Vererbungsstrukturen.
 
-Das Strategy-Pattern ist ein Entwurfsmuster, in dem Verhalten stattdessen an passende
-Klassen/Objekte ausgelagert (delegiert) wird.
+Das Strategy-Pattern ist ein Entwurfsmuster, in dem Verhalten stattdessen an
+passende Klassen/Objekte ausgelagert (delegiert) wird.
 
 Es wird eine Schnittstelle benötigt (Interface oder abstrakte Klasse), in dem
 Methoden zum Abrufen des gewünschten Verhaltens definiert werden. Konkrete Klassen
@@ -41,8 +41,8 @@ abzuleiten, um die Hundeartigkeit allgemein sicherzustellen.
 
 Da jede Rasse anders bellen soll, muss jedes Mal die Methode `bellen` überschrieben
 werden. Das ist relativ aufwändig und fehleranfällig. Außerdem kann man damit nicht
-modellieren, dass es beispielsweise auch konkrete Bulldoggen geben mag, die nur leise
-fiepen ...
+modellieren, dass es beispielsweise auch konkrete Bulldoggen geben mag, die nur
+leise fiepen ...
 :::
 
 # Lösung: Delegation der Aufgabe an geeignetes Objekt
@@ -99,8 +99,8 @@ und [Klassendiagramm](https://de.wikipedia.org/wiki/Klassendiagramm).
 
 Sortieren einer Liste von Studis: `Collections.sort` kann eine Liste nach einem
 Default-Kriterium sortieren oder aber über einen extra `Comparator` nach
-benutzerdefinierten Kriterien ... Das Verhalten der Sortiermethode wird also quasi an
-dieses Comparator-Objekt delegiert ...
+benutzerdefinierten Kriterien ... Das Verhalten der Sortiermethode wird also quasi
+an dieses Comparator-Objekt delegiert ...
 
 ``` java
 public class Studi {

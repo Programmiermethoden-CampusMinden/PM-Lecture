@@ -8,19 +8,19 @@ Zum Automatisieren von Arbeitsabläufen (Kompilieren, Testen, ...) stehen in der
 Java-Welt verschiedene Tools zur Verfügung: Apache Ant, Apache Maven und Gradle sind
 sicher die am bekanntesten darunter.
 
-In Apache Ant werden die Build-Skripte in XML definiert. Die äußere Klammer ist dabei
-das `<project>`. In einem Projekt kann es ein oder mehrere Teilziele (*Targets*)
-geben, die untereinander abhängig sein können. Die Targets können quasi "aufgerufen"
-werden bzw. in der IDE selektiert und gestartet werden.
+In Apache Ant werden die Build-Skripte in XML definiert. Die äußere Klammer ist
+dabei das `<project>`. In einem Projekt kann es ein oder mehrere Teilziele
+(*Targets*) geben, die untereinander abhängig sein können. Die Targets können quasi
+"aufgerufen" werden bzw. in der IDE selektiert und gestartet werden.
 
 In einem Target kann man schließlich mit *Tasks* Aufgaben wie Kompilieren, Testen,
 Aufräumen, ... erledigen lassen. Dazu gibt es eine breite Palette an vordefinierten
 Tasks. Zusätzlich sind umfangreiche Operationen auf dem Filesystem möglich (Ordner
 erstellen, löschen, Dinge kopieren, ...).
 
-Über *Properties* können Werte und Namen definiert werden, etwa für bestimmte Ordner.
-Die Properties sind unveränderliche Variablen (auch wenn man sie im Skript scheinbar
-neu setzen kann).
+Über *Properties* können Werte und Namen definiert werden, etwa für bestimmte
+Ordner. Die Properties sind unveränderliche Variablen (auch wenn man sie im Skript
+scheinbar neu setzen kann).
 
 Über Apache Ivy können analog zu Maven und Gradle definierte Abhängigkeiten aus
 Maven-Central aufgelöst werden.
@@ -256,8 +256,8 @@ Es gibt auch die Variante `<dirset dir="...">`, um Verzeichnisse zu gruppieren.
     </target>
     ```
 
-    *Anmerkung*: Neben dem `fileset` können Sie hier auch (wie oben gezeigt) ein oder
-    mehrere `pathelement` nutzen.
+    *Anmerkung*: Neben dem `fileset` können Sie hier auch (wie oben gezeigt) ein
+    oder mehrere `pathelement` nutzen.
     :::
 
 \bigskip
@@ -417,8 +417,8 @@ Projektabhängigkeiten heruntergeladen werden können.
 ```
 
 ::: notes
-Zur Steuerung von Ivy legt man eine weitere Datei `ivy.xml` an. Das Wurzelelement ist
-`ivy-module`, wobei die `version` die niedrigste kompatible Ivy-Version angibt.
+Zur Steuerung von Ivy legt man eine weitere Datei `ivy.xml` an. Das Wurzelelement
+ist `ivy-module`, wobei die `version` die niedrigste kompatible Ivy-Version angibt.
 
 Der `dependencies`-Abschnitt definiert dann die Abhängigkeiten, die Ivy auflösen
 muss. Die Schreibweise ist dabei wie im Maven2 Repository
@@ -434,8 +434,8 @@ beispielsweise für Apache Commons CLI den Eintrag für Maven ("POM"-Datei):
 </dependency>
 ```
 
-Für die Ivy-Konfiguration übernimmt man die `groupId` als `org`, die `artifactId` als
-`name` und die `version` als `rev` im Eintrag `dependency`.
+Für die Ivy-Konfiguration übernimmt man die `groupId` als `org`, die `artifactId`
+als `name` und die `version` als `rev` im Eintrag `dependency`.
 
 Damit kann Ivy diese Bibliothek über den Ant-Task `ivy:retrieve` vor dem Bauen
 herunterladen, sofern die Bibliothek noch nicht lokal vorhanden ist. Eventuelle

@@ -4,17 +4,17 @@ title: Java Collections Framework
 ---
 
 ::: tldr
-Die Collection-API bietet verschiedene Sammlungen an, mit denen man Objekte speichern
-kann: Listen, Queues, Mengen, ... Für diese Typen gibt es jeweils verschiedene
-Implementierungen mit einem spezifischen Verhalten. Zusätzlich gibt es noch Maps für
-das Speichern von Key/Value-Paaren, dabei wird für die Keys eine Hash-Tabelle
-eingesetzt.
+Die Collection-API bietet verschiedene Sammlungen an, mit denen man Objekte
+speichern kann: Listen, Queues, Mengen, ... Für diese Typen gibt es jeweils
+verschiedene Implementierungen mit einem spezifischen Verhalten. Zusätzlich gibt es
+noch Maps für das Speichern von Key/Value-Paaren, dabei wird für die Keys eine
+Hash-Tabelle eingesetzt.
 
 Die Hilfs-Klasse `Collections` bietet statische Hilfs-Methoden, die auf
 `Collection<T>`s anwendbar sind.
 
-Wenn man eigene Klassen in der Collection-API oder in Map benutzen möchte, sollte man
-den "equals-hashCode-Contract" berücksichtigen.
+Wenn man eigene Klassen in der Collection-API oder in Map benutzen möchte, sollte
+man den "equals-hashCode-Contract" berücksichtigen.
 :::
 
 ::: youtube
@@ -76,10 +76,10 @@ eingesehen werden.
 -   `Queue<T>`-Collections sind eine geordnete Sammlung von Objekten. Objekte können
     nur am Ende der Queue hinzugefügt werden und nur am Anfang der Queue (der Head)
     gelesen oder entnommen werden ("first in first out").
--   `Set<T>`-Collections sind eine (i.d.R.!) ungeordnete Menge an Objekten, die stets
-    nur einmal in der Set enthalten sein können. In einem Set kann nicht direkt auf
-    ein Objekt zugegriffen werden. Es kann aber geprüft werden, ob ein spezifisches
-    Objekt in einer Set gespeichert ist.
+-   `Set<T>`-Collections sind eine (i.d.R.!) ungeordnete Menge an Objekten, die
+    stets nur einmal in der Set enthalten sein können. In einem Set kann nicht
+    direkt auf ein Objekt zugegriffen werden. Es kann aber geprüft werden, ob ein
+    spezifisches Objekt in einer Set gespeichert ist.
 
 **Wichtig**: `List<T>`, `Set<T>`, `Queue<T>` und `Map<K,V>` sind **Interfaces**,
 definieren also bestimmte Schnittstellen, die sich so wie aus ADS her bekannt
@@ -109,8 +109,8 @@ Animation](https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/m
 Eine `ArrayList<T>` ist von außen betrachtet ein sich dynamisch vergrößerndes Array.
 
 Intern wird allerdings ein statisches(!) Array benutzt. Wenn dieses Array voll ist,
-wird es um 50% vergrößert und alle Inhalte in das neue Array kopiert. Davon merkt man
-als Nutzer aber nichts.
+wird es um 50% vergrößert und alle Inhalte in das neue Array kopiert. Davon merkt
+man als Nutzer aber nichts.
 
 Dank es Arrays kann auf ein Element per Index mit O(1) zugegriffen werden.
 
@@ -118,7 +118,8 @@ Wird ein Element aus der Liste gelöscht, rücken alle Nachfolgenden Einträge i
 Liste einen Index auf (interner Kopiervorgang).
 
 Deshalb ist eine `ArrayList<T>` effizient in der Abfrage und Manipulation von
-Einträgen, aber deutlich weniger effizient beim Hinzufügen und Löschen von Einträgen.
+Einträgen, aber deutlich weniger effizient beim Hinzufügen und Löschen von
+Einträgen.
 
 Per Default wird eine `ArrayList<T>` mit einem Array der Länge 10 angelegt, sobald
 das erste Element eingefügt wird. Man kann die Startgröße auch im Konstruktoraufruf
@@ -206,10 +207,10 @@ ablaufen, beispielsweise einen Binärbaum.
 [Link zu einer netten
 Animation](https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/markdown/java-jvm/images/iterator.gif)
 
-Man kann auch selbst für eigene Klassen einen passenden `Iterator<T>` implementieren,
-der zum Ablaufen der Elemente der eigenen Klasse genutzt werden kann. Damit die
-eigene Klasse auch in einer `for`-Schleife genutzt werden kann, muss sie aber auch
-noch `Iterable<T>` implementieren.
+Man kann auch selbst für eigene Klassen einen passenden `Iterator<T>`
+implementieren, der zum Ablaufen der Elemente der eigenen Klasse genutzt werden
+kann. Damit die eigene Klasse auch in einer `for`-Schleife genutzt werden kann, muss
+sie aber auch noch `Iterable<T>` implementieren.
 
 [Beispiel: iterator_example.\*]{.ex
 href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/tree/master/markdown/java-jvm/src/collections/iterator_example/"}
@@ -229,10 +230,10 @@ Collections](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/u
 
 Der Hintergrund für diese in Java nicht unübliche Aufsplittung in ein Interface und
 eine Utility-Klasse ist, dass bis vor kurzem Interface nur Schnittstellen definieren
-konnten. Erst seit einigen Java-Versionen kann in Interfaces auch Verhalten definiert
-werden (Default-Methoden). Aus heutiger Sicht würde man also vermutlich die
-statischen Methoden in der Klasse `Collections` eher direkt als Default-Methoden im
-Interface `Collection<T>` implementieren und bereitstellen, statt eine separate
+konnten. Erst seit einigen Java-Versionen kann in Interfaces auch Verhalten
+definiert werden (Default-Methoden). Aus heutiger Sicht würde man also vermutlich
+die statischen Methoden in der Klasse `Collections` eher direkt als Default-Methoden
+im Interface `Collection<T>` implementieren und bereitstellen, statt eine separate
 Utility-Klasse zu definieren.
 :::
 
@@ -255,8 +256,8 @@ Eine `Map<K,V>` speichert Objekte als Key/Value-Paar mit den Typen `K` (Key) und
 (Value).
 
 Dabei sind die Keys in einer Map einzigartig und werden verwendet, um auf das
-jeweilige Value zuzugreifen. Ein Value kann entsprechend (mit unterschiedlichen Keys)
-mehrfach im einer Map enthalten sein.
+jeweilige Value zuzugreifen. Ein Value kann entsprechend (mit unterschiedlichen
+Keys) mehrfach im einer Map enthalten sein.
 
 Es gibt eine Reihe verschiedener Implementierungen, die unterschiedliche
 Datenstrukturen einsetzen, beispielsweise:
@@ -286,8 +287,8 @@ Um einen Eintrag hinzufügen, wird zunächst aus dem `hashCode()` des Key-Objekt
 mithilfe der Hash-Funktion der Index des Buckets berechnet. Ist der Bucket gefunden,
 wird geprüft, ob das Objekt dort schon vorkommt: Mit dem `hashCode()` des
 Key-Objektes werden alle Objekte in der Liste des Buckets verglichen. Wenn es
-Einträge mit dem selben `hashCode()` in der Liste gibt, wird mit `equals` geprüft, ob
-die Key-Objekte identisch sind. Ist dies der Fall, wird der existierende Eintrag
+Einträge mit dem selben `hashCode()` in der Liste gibt, wird mit `equals` geprüft,
+ob die Key-Objekte identisch sind. Ist dies der Fall, wird der existierende Eintrag
 überschrieben, anderenfalls wird der neue Eintrag an das Ende der Liste hinzugefügt.
 
 Implementierungsdetail: Wenn die Listen zu groß werden, wird die Hashtabelle neu
@@ -350,8 +351,8 @@ genutzten Attribute nicht ändern.
 ## *compareTo()*
 
 Die Methode `int compareTo()` (Interface `Comparable<T>`) vergleicht Objekte und
-definiert damit eine Ordnung auf den Objekten. Während `equals()` für die Prüfung auf
-Gleichheit eingesetzt wird, wird `compareTo()` für die Sortierung von Objekten
+definiert damit eine Ordnung auf den Objekten. Während `equals()` für die Prüfung
+auf Gleichheit eingesetzt wird, wird `compareTo()` für die Sortierung von Objekten
 untereinander verwendet.
 
 Spielregeln:
@@ -385,10 +386,11 @@ werden.**
     allerdings die Leistung von Hash-Berechnungen, etwa in einer
     `HashMap<K,V>`!)]{.notes}
 
-3.  [Es wird sehr empfohlen, dass `equals()` und `compareTo()` konsistente Ergebnisse
-    liefern:]{.notes} `x.compareTo(y) == 0` gdw. `x.equals(y) == true` [(Dies *muss*
-    aber nicht zwingend eingehalten werden, sorgt dann aber u.U. für unerwartete
-    Nebeneffekte beim Umgang mit `Collection<T>` und `Map<K,V>`!)]{.notes}
+3.  [Es wird sehr empfohlen, dass `equals()` und `compareTo()` konsistente
+    Ergebnisse liefern:]{.notes} `x.compareTo(y) == 0` gdw. `x.equals(y) == true`
+    [(Dies *muss* aber nicht zwingend eingehalten werden, sorgt dann aber u.U. für
+    unerwartete Nebeneffekte beim Umgang mit `Collection<T>` und
+    `Map<K,V>`!)]{.notes}
 
 ::: notes
 [Beispiel: hash_example.HashCodeExample]{.ex
@@ -400,9 +402,9 @@ href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master
 
 ![](images/collections_table.png){width="80%"}
 
-Komplexitätswerte beziehen sich auf den Regelfall. Sonderfälle wie das Vergrößern des
-Array einer `ArrayList<T>` können für temporär erhöhte Komplexität sorgen (das ist
-dem O-Kalkül aber egal).
+Komplexitätswerte beziehen sich auf den Regelfall. Sonderfälle wie das Vergrößern
+des Array einer `ArrayList<T>` können für temporär erhöhte Komplexität sorgen (das
+ist dem O-Kalkül aber egal).
 :::
 
 # Wrap-Up
@@ -411,7 +413,8 @@ dem O-Kalkül aber egal).
     Verwaltung einer Menge von Objekten]{.notes}
 -   Klasse `Collections`: Statische Hilfs-Methoden [(anwendbar auf
     `Collection<T>`s)]{.notes}
--   `Iterable<T>` liefert einen `Iterator<T>` zur Iteration über eine `Collection<T>`
+-   `Iterable<T>` liefert einen `Iterator<T>` zur Iteration über eine
+    `Collection<T>`
 -   Interface `Map<K,V>`: Speichern von Key/Value-Paaren
 -   `equals()`-`hashCode()`-`compareTo()`-Vertrag beachten
 
@@ -423,12 +426,13 @@ dem O-Kalkül aber egal).
 -   k2: Was ist der Unterschied zwischen Collection\<T\> und List\<T\>?
 -   k2: Was ist der Unterschied zwischen einer List\<T\>, einer Queue\<T\> und einer
     Set\<T\>?
--   k2: Nennen Sie charakteristische Merkmale von ArrayList\<T\>, LinkedList\<T\> und
-    Vector\<T\>.
+-   k2: Nennen Sie charakteristische Merkmale von ArrayList\<T\>, LinkedList\<T\>
+    und Vector\<T\>.
 -   k2: Was ist der Unterschied zwischen einer Queue\<T\> und einem Stack\<T\>?
 -   k2: Was ist eine Map\<K,V\>? Welche Vertreter kennen Sie?
 -   k3: Erklären Sie die 'Spielregeln' für die eigene Implementierung von equals().
--   k3: Erklären Sie die 'Spielregeln' für die eigene Implementierung von hashCode().
+-   k3: Erklären Sie die 'Spielregeln' für die eigene Implementierung von
+    hashCode().
 -   k3: Erklären Sie die 'Spielregeln' für die eigene Implementierung von
     compareTo().
 -   k3: Wie müssen und wie sollten equals(), hashCode() und compareTo() miteinander

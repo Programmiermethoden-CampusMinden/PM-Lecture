@@ -51,8 +51,8 @@ public class Level {
 ```
 
 ::: notes
-Ein Level kann als Array mit Feldern modelliert werden. Die Felder selbst könnten mit
-Hilfe eines Enums repräsentiert werden.
+Ein Level kann als Array mit Feldern modelliert werden. Die Felder selbst könnten
+mit Hilfe eines Enums repräsentiert werden.
 
 Allerdings muss dann bei jedem Zugriff auf ein Feld und dessen Eigenschaften eine
 entsprechende `switch/case`-Fallunterscheidung eingebaut werden. Damit verstreut man
@@ -97,9 +97,9 @@ Hier werden die Felder über eine Klassenhierarchie mit gemeinsamer Basisklasse
 modelliert.
 
 Allerdings wird hier die Klassenhierarchie unter Umständen sehr schnell sehr
-umfangreich. Außerdem werden Eigenschaften wie Texturen beim Anlegen der Tile-Objekte
-immer wieder neu geladen und entsprechend mehrfach im Speicher gehalten (großer
-Speicherbedarf).
+umfangreich. Außerdem werden Eigenschaften wie Texturen beim Anlegen der
+Tile-Objekte immer wieder neu geladen und entsprechend mehrfach im Speicher gehalten
+(großer Speicherbedarf).
 :::
 
 # Flyweight: Nutze gemeinsame Eigenschaften gemeinsam
@@ -186,14 +186,14 @@ public class Level {
 ```
 
 ::: notes
-In dieser Variante werden die Eigenschaften eines `Tile` in Eigenschaften aufgeteilt,
-die von den Tiles geteilt werden können (im Beispiel Textur und Betretbarkeit) und in
-Eigenschaften, die je Feld individuell modelliert werden müssen (im Beispiel: wurde
-das Feld bereits betreten?).
+In dieser Variante werden die Eigenschaften eines `Tile` in Eigenschaften
+aufgeteilt, die von den Tiles geteilt werden können (im Beispiel Textur und
+Betretbarkeit) und in Eigenschaften, die je Feld individuell modelliert werden
+müssen (im Beispiel: wurde das Feld bereits betreten?).
 
 Entsprechend könnte man für das Level-Beispiel ein `TileModel` anlegen, welches die
-gemeinsamen Eigenschaften verwaltet. Man erzeugt dann im Level die nötigen Modelle je
-genau einmal und nutzt sie, um damit dann die konkreten Felder zu erzeugen und im
+gemeinsamen Eigenschaften verwaltet. Man erzeugt dann im Level die nötigen Modelle
+je genau einmal und nutzt sie, um damit dann die konkreten Felder zu erzeugen und im
 Level-Array zu referenzieren. Damit werden Tile-Modelle von Tiles der gleichen
 "Klasse" gemeinsam genutzt und die Texturen u.ä. nur je einmal im Speicher
 repräsentiert.
@@ -216,9 +216,10 @@ repräsentiert.
 [[Hinweis zum Beispiel: -Interface, -Factory, +Composite]{.ex}]{.slides}
 
 ::: notes
-Im klassischen Flyweight-Pattern der "Gang of Four" [@Gamma2011] wird ein gemeinsames
-Interface erstellt, von dem die einzelnen Fliegengewicht-Klassen ableiten. Der Nutzer
-kennt nur dieses Interface und nicht direkt die implementierenden Klassen.
+Im klassischen Flyweight-Pattern der "Gang of Four" [@Gamma2011] wird ein
+gemeinsames Interface erstellt, von dem die einzelnen Fliegengewicht-Klassen
+ableiten. Der Nutzer kennt nur dieses Interface und nicht direkt die
+implementierenden Klassen.
 
 Das Interface wird von zwei Arten von Klassen implementiert: Klassen, die nur
 intrinsischen Zustand modellieren, und Klassen, die extrinsischen Zustand
@@ -236,16 +237,16 @@ erstellt werden. Aber auch diese werden von der Factory erzeugt/verwaltet.
 
 ## Kombination mit dem Composite-Pattern
 
-In der Praxis kann man das Pattern so direkt meist nicht einsetzen, sondern verbindet
-es mit dem Composite-Pattern:
+In der Praxis kann man das Pattern so direkt meist nicht einsetzen, sondern
+verbindet es mit dem Composite-Pattern:
 
 ![](images/composite.png){width="40%"}
 
-Ein Element kann eine einfache Komponente sein (im obigen Beispiel war das die Klasse
-`TileModel`) oder eine zusammengesetzte Komponente, die ihrerseits andere Komponenten
-speichert (im obigen Beispiel war das die Klasse `Tile`, die ein Objekt vom Typ
-`TileModel` referenziert - allerdings fehlt im obigen Beispiel das gemeinsame
-Interface ...).
+Ein Element kann eine einfache Komponente sein (im obigen Beispiel war das die
+Klasse `TileModel`) oder eine zusammengesetzte Komponente, die ihrerseits andere
+Komponenten speichert (im obigen Beispiel war das die Klasse `Tile`, die ein Objekt
+vom Typ `TileModel` referenziert - allerdings fehlt im obigen Beispiel das
+gemeinsame Interface ...).
 
 ## Level-Beispiel mit Flyweight (vollständig) und Composite
 
@@ -324,9 +325,9 @@ Das [Flyweight-Pattern](https://gameprogrammingpatterns.com/flyweight.html) ist 
 mehrere Objekte gemeinsame Daten, die über Referenzen auf gemeinsame Hilfsobjekte
 eingebunden werden. Die Zielrichtung unterscheidet sich aber deutlich:
 
--   Beim Flyweight-Pattern ist das Ziel vor allem die Erhöhung der Speichereffizienz,
-    und die dort geteilten Daten müssen nicht unbedingt den "Typ" des nutzenden
-    Objekts definieren.
+-   Beim Flyweight-Pattern ist das Ziel vor allem die Erhöhung der
+    Speichereffizienz, und die dort geteilten Daten müssen nicht unbedingt den "Typ"
+    des nutzenden Objekts definieren.
 -   Beim Type-Objekt-Pattern ist das Ziel die Flexibilität auf Code-Ebene, indem man
     die Anzahl der Klassen minimiert und die Typen in ein eigenes Objekt-Modell
     verschiebt. Das Teilen von Speicher ist hier nur ein Nebeneffekt.
@@ -363,10 +364,10 @@ In den
 [Vorgaben](https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/tree/master/markdown/pattern/src/challenges/flyweight)
 finden Sie ein Modellierung eines Schachspiels.
 
-Identifizieren Sie die Stellen im Vorgabe-Code, wo Sie das Flyweight-Pattern sinnvoll
-anwenden können und bauen Sie dieses Pattern über ein Refactoring ein. Begründen Sie,
-wie Sie das Pattern eingesetzt haben und warum Sie welche Elemente *immutable* oder
-*mutable* deklariert haben.
+Identifizieren Sie die Stellen im Vorgabe-Code, wo Sie das Flyweight-Pattern
+sinnvoll anwenden können und bauen Sie dieses Pattern über ein Refactoring ein.
+Begründen Sie, wie Sie das Pattern eingesetzt haben und warum Sie welche Elemente
+*immutable* oder *mutable* deklariert haben.
 
 Wieso eignet sich das Flyweight-Pattern besonders im Bereich von Computerspielen?
 Geben Sie mögliche Vor- und Nachteile an und begründen Sie Ihre Antwort.

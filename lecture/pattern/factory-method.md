@@ -84,16 +84,16 @@ Zweck er gedacht ist ("*stationär*" oder "*mobil*"). Nach reichlicher Überlegu
 er den neuen Rechner zu Hause stehen haben möchte oder lieber keinen weiteren
 Rechner, egal ob "*mobil*" oder "*stationär*", bei sich im Weg herumstehen haben
 will, teilt er Ihnen seine Entscheidung darüber mit ("*stationär*" oder "*mobil*"
-vs. "*nicht daheim*"). Bei diesem Gespräch merkt er beiläufig an, dass es ein Rechner
-mit "*viel Wumms*" sein könnte oder vielleicht doch besser etwas Kleines, was leise
-vor sich hin schnurrt ("*viel Wumms*" vs. "*leise schnurrend*").
+vs. "*nicht daheim*"). Bei diesem Gespräch merkt er beiläufig an, dass es ein
+Rechner mit "*viel Wumms*" sein könnte oder vielleicht doch besser etwas Kleines,
+was leise vor sich hin schnurrt ("*viel Wumms*" vs. "*leise schnurrend*").
 
 Je nach gewünschter Konfiguration soll ein den oben genannten Auswahlkriterien
 entsprechender Rechner mit den aus der unten stehenden Konfigurationsmatrix zu
 entnehmenden Eigenschaften automatisch erzeugt werden. Die Größe des installierten
 `RAM`, die Anzahl der eingebauten `CPU`-Kerne mit ihrer jeweiligen Taktrate, sowie
-die Art und Größe der installierten Festplatte (`HDD` oder `SSD`) sollte dabei zu dem
-gewählten Paket passend gesetzt werden.
+die Art und Größe der installierten Festplatte (`HDD` oder `SSD`) sollte dabei zu
+dem gewählten Paket passend gesetzt werden.
 
 Implementieren Sie eine "Computerfabrik" (Klasse `ComputerFactory`), die Ihnen den
 richtig konfigurierten Rechner zusammenbaut. Nutzen Sie dabei das
@@ -118,7 +118,7 @@ public class ComputerFactory {
 **Konfigurationsmatrix**
 
 |  | "stationär" (`DesktopComputer`) | "mobil" (`LaptopComputer`) | "nicht daheim" (`CloudComputer`) |
-|:-----------:|:----------------------:|:---------------------:|:------------------------:|
+|:-----------:|:----------------------:|:---------------------:|:-----------------------:|
 | "leise schnurrend" | 8 Cores, 1.21GHZ, 16GB RAM, 256GB HDD | 4 Cores, 1.21GHZ, 8GB RAM, 256GB HDD | 8 Cores, 1.21GHZ, 24GB RAM, 1000GB HDD |
 | "viel Wumms" | 16 Cores, 4.2GHZ, 32GB RAM, 2000GB SSD | 8 Cores, 2.4GHZ, 16GB RAM, 256GB SSD | 42 Cores, 9.001GHZ, 128GB RAM, 10000GB SSD |
 :::

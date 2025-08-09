@@ -8,23 +8,23 @@ Das Type-Object-Pattern dient dazu, die Anzahl der Klassen auf Code-Ebene zu
 reduzieren und durch eine Konfiguration zu ersetzen und damit eine höhere
 Flexibilität zu erreichen.
 
-Dazu werden sogenannte Type-Objects definiert: Sie enthalten genau die Eigenschaften,
-die in verschiedenen (Unter-) Klassen gemeinsam vorkommen. Damit können diese
-Eigenschaften aus den ursprünglichen Klassen entfernt und durch eine Referenz auf ein
-solches Type-Object ersetzt werden. In den Klassen muss man dann nur noch die für die
-einzelnen Typen individuellen Eigenschaften implementieren. Zusätzlich kann man nun
-verschiedene (Unter-) Klassen zusammenlegen, da der Typ über das geteilte Type-Object
-definiert wird (zur Laufzeit) und nicht mehr durch eine separate Klasse auf
-Code-Ebene repräsentiert werden muss.
+Dazu werden sogenannte Type-Objects definiert: Sie enthalten genau die
+Eigenschaften, die in verschiedenen (Unter-) Klassen gemeinsam vorkommen. Damit
+können diese Eigenschaften aus den ursprünglichen Klassen entfernt und durch eine
+Referenz auf ein solches Type-Object ersetzt werden. In den Klassen muss man dann
+nur noch die für die einzelnen Typen individuellen Eigenschaften implementieren.
+Zusätzlich kann man nun verschiedene (Unter-) Klassen zusammenlegen, da der Typ über
+das geteilte Type-Object definiert wird (zur Laufzeit) und nicht mehr durch eine
+separate Klasse auf Code-Ebene repräsentiert werden muss.
 
-Die Type-Objects werden zur Laufzeit mit den entsprechenden Ausprägungen der früheren
-(Unter-) Klassen angelegt und dann über den Konstruktor in die nutzenden Objekte
-übergeben. Dadurch teilen sich alle Objekte einer früheren (Unter-) Klasse das selbe
-Type-Objekt und zeigen nach außen das selbe Verhalten. Die Type-Objects werden häufig
-über eine entsprechende Konfiguration erzeugt, so dass man beispielsweise
-unterschiedliche Monsterklassen und -eigenschaften ausprobieren kann, ohne den Code
-neu kompilieren zu müssen. Man kann sogar eine Art "Vererbung" unter den Type-Objects
-implementieren.
+Die Type-Objects werden zur Laufzeit mit den entsprechenden Ausprägungen der
+früheren (Unter-) Klassen angelegt und dann über den Konstruktor in die nutzenden
+Objekte übergeben. Dadurch teilen sich alle Objekte einer früheren (Unter-) Klasse
+das selbe Type-Objekt und zeigen nach außen das selbe Verhalten. Die Type-Objects
+werden häufig über eine entsprechende Konfiguration erzeugt, so dass man
+beispielsweise unterschiedliche Monsterklassen und -eigenschaften ausprobieren kann,
+ohne den Code neu kompilieren zu müssen. Man kann sogar eine Art "Vererbung" unter
+den Type-Objects implementieren.
 :::
 
 ::: youtube
@@ -67,10 +67,10 @@ Um nun andere Monstertypen zu erzeugen, greifen Sie zur Vererbung und leiten von
 Basisklasse Ihre spezialisierten Monster ab und überschreiben die Defaultwerte und
 bei Bedarf auch das Verhalten (die Methoden).
 
-Damit entsteht aber recht schnell eine tiefe und verzweigte Vererbungshierarchie, Sie
-müssen ja für jede Variation eine neue Unterklasse anlegen. Außerdem müssen für jede
-(noch so kleine) Änderung an den Monster-Eigenschaften viele Klassen editiert und das
-gesamte Projekt neu kompiliert werden.
+Damit entsteht aber recht schnell eine tiefe und verzweigte Vererbungshierarchie,
+Sie müssen ja für jede Variation eine neue Unterklasse anlegen. Außerdem müssen für
+jede (noch so kleine) Änderung an den Monster-Eigenschaften viele Klassen editiert
+und das gesamte Projekt neu kompiliert werden.
 
 Es würde auch nicht wirklich helfen, die Eigenschaften der Unterklassen über deren
 Konstruktor einstellbar zu machen (die `Rat` könnte in ihrem Konstruktor
@@ -114,15 +114,15 @@ Methoden des Monsters abgefragt wird. So kann zur Laufzeit bei der Erzeugung der
 Monster-Objekte durch Übergabe des Enums bestimmt werden, was genau dieses konkrete
 Monster genau ist bzw. wie es sich verhält.
 
-Im obigen Beispiel wird eine Variante gezeigt, wo das Enum im Konstruktor ausgewertet
-wird und die Attribute entsprechend gesetzt werden. Man könnte das auch so
-implementieren, dass man auf die Attribute verzichtet und stattdessen stets das Enum
-auswertet.
+Im obigen Beispiel wird eine Variante gezeigt, wo das Enum im Konstruktor
+ausgewertet wird und die Attribute entsprechend gesetzt werden. Man könnte das auch
+so implementieren, dass man auf die Attribute verzichtet und stattdessen stets das
+Enum auswertet.
 
 Allerdings ist das Hantieren mit den Enums etwas umständlich: Man muss an allen
-Stellen, wo das Verhalten der Monster unterschiedlich ist, ein `switch/case` einbauen
-und den Wert des Type-Objects abfragen. Das bedeutet einerseits viel duplizierten
-Code und andererseits muss man bei Erweiterungen des Enums auch *alle*
+Stellen, wo das Verhalten der Monster unterschiedlich ist, ein `switch/case`
+einbauen und den Wert des Type-Objects abfragen. Das bedeutet einerseits viel
+duplizierten Code und andererseits muss man bei Erweiterungen des Enums auch *alle*
 `switch/case`-Blöcke anpassen.
 :::
 
@@ -297,9 +297,9 @@ beiden Pattern teilen sich mehrere Objekte gemeinsame Daten, die über Referenze
 gemeinsame Hilfsobjekte eingebunden werden. Die Zielrichtung unterscheidet sich aber
 deutlich:
 
--   Beim Flyweight-Pattern ist das Ziel vor allem die Erhöhung der Speichereffizienz,
-    und die dort geteilten Daten müssen nicht unbedingt den "Typ" des nutzenden
-    Objekts definieren.
+-   Beim Flyweight-Pattern ist das Ziel vor allem die Erhöhung der
+    Speichereffizienz, und die dort geteilten Daten müssen nicht unbedingt den "Typ"
+    des nutzenden Objekts definieren.
 -   Beim Type-Objekt-Pattern ist das Ziel die Flexibilität auf Code-Ebene, indem man
     die Anzahl der Klassen minimiert und die Typen in ein eigenes Objekt-Modell
     verschiebt. Das Teilen von Speicher ist hier nur ein Nebeneffekt.
@@ -349,12 +349,12 @@ public interface IMonster {
 ```
 
 Leiten Sie von diesem Interface eine Klasse `Monster` ab. Nutzen Sie das
-Type-Object-Pattern und erzeugen Sie verschiedene "Klassen" von Monstern, die sich in
-den Eigenschaften `variety`, `xp` und `magic` unterscheiden und in der Methode
-`makeNoise()` entsprechend unterschiedlich verhalten. Die Eigenschaft `xp` wird dabei
-von jedem Monster während seiner Lebensdauer selbst verwaltet, die anderen
-Eigenschaften bleiben während der Lebensdauer eines Monsters konstant (ebenso wie die
-Methode `makeNoise()`).
+Type-Object-Pattern und erzeugen Sie verschiedene "Klassen" von Monstern, die sich
+in den Eigenschaften `variety`, `xp` und `magic` unterscheiden und in der Methode
+`makeNoise()` entsprechend unterschiedlich verhalten. Die Eigenschaft `xp` wird
+dabei von jedem Monster während seiner Lebensdauer selbst verwaltet, die anderen
+Eigenschaften bleiben während der Lebensdauer eines Monsters konstant (ebenso wie
+die Methode `makeNoise()`).
 
 1.  Was wird Bestandteil des Type-Objects? Begründen Sie Ihre Antwort.
 2.  Implementieren Sie das Type-Object und integrieren Sie es in die Klasse

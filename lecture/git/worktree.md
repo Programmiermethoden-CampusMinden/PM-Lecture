@@ -60,8 +60,8 @@ verschiedenen Branches zu arbeiten.
     IDE als neues Projekt öffnen und sofort starten.
 
     Aber: Sie benötigen noch einmal den Platz auf der Festplatte/SSD/... wie für die
-    ursprüngliche Workingcopy! Das kann bei alten/großen Projekten schnell recht groß
-    werden und Probleme verursachen.
+    ursprüngliche Workingcopy! Das kann bei alten/großen Projekten schnell recht
+    groß werden und Probleme verursachen.
 
     Außerdem ist die Synchronisierung zwischen den beiden Workingcopies (der
     ursprünglichen und der neuen) nicht vorhanden bzw. das müssen Sie manuell per

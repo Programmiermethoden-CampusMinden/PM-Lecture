@@ -12,8 +12,8 @@ Ihren Dungeon. Sie dürfen sich diese(s) Feature(s) selbst aussuchen und konzipi
 Beachten Sie dabei, dass Ihr Feature nicht Teil einer anderen Dungeon-Aufgabe oder
 Teil der Vorgabe sein kann.
 
-Formulieren Sie Ihr Vorhaben ausführlich in Ihrer Konzeptskizze. Machen Sie besonders
-deutlich, **was** Sie erreichen wollen.
+Formulieren Sie Ihr Vorhaben ausführlich in Ihrer Konzeptskizze. Machen Sie
+besonders deutlich, **was** Sie erreichen wollen.
 
 Diese Aufgabe bringt Ihnen bis zu 10 Punkte ein. Wählen Sie den Umfang daher
 entsprechend so, dass Sie nicht zu wenig, aber auch nicht zu viel zu tun haben.

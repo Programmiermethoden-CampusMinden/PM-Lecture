@@ -32,8 +32,8 @@ Das "zentrale" Objekt, welches abgefragt wird, nennt man "*Observable*" oder
 Die Studierenden möchten nach einer Prüfung wissen, ob für einen bestimmten Kurs
 die/ihre Prüfungsergebnisse im LSF bereit stehen.
 
-Dazu modelliert man eine Klasse `LSF` und implementiert eine Abfragemethode, die dann
-alle Objekte regelmäßig aufrufen können. Dies sieht dann praktisch etwa so aus:
+Dazu modelliert man eine Klasse `LSF` und implementiert eine Abfragemethode, die
+dann alle Objekte regelmäßig aufrufen können. Dies sieht dann praktisch etwa so aus:
 
 ``` java
 final Person[] persons = { new Lecturer("Frau Holle"),
@@ -57,8 +57,8 @@ for (Person p : persons) {
 Sie erstellen im `LSF` eine Methode `register()`, mit der sich interessierte Objekte
 beim `LSF` registrieren können.
 
-Zur Benachrichtigung der registrierten Objekte brauchen diese eine geeignete Methode,
-die traditionell `update()` genannt wird.
+Zur Benachrichtigung der registrierten Objekte brauchen diese eine geeignete
+Methode, die traditionell `update()` genannt wird.
 :::
 
 [Demo: observer]{.ex
@@ -94,10 +94,10 @@ das beobachtete Objekt beim Aufruf der `update()`-Methode die Informationen als
 Parameter mitgibt, beispielsweise eine Referenz auf sich selbst o.ä. ... Dies muss
 dann natürlich im `Observer`-Interface nachgezogen werden.
 
-**Hinweis**: Es gibt in Swing bereits die Interfaces `Observer` und `Observable`, die
-aber als "deprecated" gekennzeichnet sind. Sinnvollerweise nutzen Sie nicht diese
-Interfaces aus Swing, sondern implementieren Ihre eigenen Interfaces, wenn Sie das
-Observer-Pattern einsetzen wollen!
+**Hinweis**: Es gibt in Swing bereits die Interfaces `Observer` und `Observable`,
+die aber als "deprecated" gekennzeichnet sind. Sinnvollerweise nutzen Sie nicht
+diese Interfaces aus Swing, sondern implementieren Ihre eigenen Interfaces, wenn Sie
+das Observer-Pattern einsetzen wollen!
 :::
 
 # Wrap-Up
@@ -146,8 +146,8 @@ benötigte Ware bei einer Bestellung also nicht oder nicht in ausreichender Zahl
 Lager, wird diese nicht geliefert und der Einzelhandel muss (später) eine neue
 Bestellung aufgeben.
 
-Der Großhandel bekommt regelmäßig (`Grosshandel#loop`) neue Ware für die am wenigsten
-vorrätigen Positionen.
+Der Großhandel bekommt regelmäßig (`Grosshandel#loop`) neue Ware für die am
+wenigsten vorrätigen Positionen.
 
 Im aktuellen Modell wird der Einzelhandel nicht über den neuen Lagerbestand des
 Großhändlers informiert und kann daher nur "zufällig" neue Bestellanfragen an den

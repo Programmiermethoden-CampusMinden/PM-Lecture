@@ -15,18 +15,20 @@ Um Objekte einer Klasse serialisieren zu können, muss diese das leere Interface
 Unterstützung in `Object*Stream` freigeschaltet.
 
 Wenn ein Objekt serialisiert wird, werden alle Attribute in den Datenstrom
-geschrieben, d.h. die Typen der Attribute müssen ihrerseits serialisierbar sein. Dies
-gilt für alle primitiven Typen und die meisten eingebauten Typen. Die Serialisierung
-erfolgt ggf. rekursiv, Zirkelreferenzen werden erkannt und aufgebrochen.
+geschrieben, d.h. die Typen der Attribute müssen ihrerseits serialisierbar sein.
+Dies gilt für alle primitiven Typen und die meisten eingebauten Typen. Die
+Serialisierung erfolgt ggf. rekursiv, Zirkelreferenzen werden erkannt und
+aufgebrochen.
 
 `static` und `transient` Attribute werden nicht serialisiert.
 
 Beim De-Serialisieren wird das neue Objekt von der Laufzeitumgebung aus dem
-Datenstrom rekonstruiert. Dies geschieht direkt, es wird kein Konstruktor involviert.
+Datenstrom rekonstruiert. Dies geschieht direkt, es wird kein Konstruktor
+involviert.
 
 Beim Serialisieren wird für die Klasse des zu schreibenden Objekts eine
-`serialVersionUID` berechnet und mit gespeichert. Beim Einlesen wird dann geprüft, ob
-die serialisierten Daten zur aktuellen Version der Klasse passen. Da dies relativ
+`serialVersionUID` berechnet und mit gespeichert. Beim Einlesen wird dann geprüft,
+ob die serialisierten Daten zur aktuellen Version der Klasse passen. Da dies relativ
 empfindlich gegenüber Änderungen an einer Klasse ist, wird empfohlen, selbst eine
 `serialVersionUID` pro Klasse zu definieren.
 :::
@@ -75,8 +77,8 @@ fortsetzen kann?
     Interface implementierende Klasse dann erfüllen muss. Damit agiert das Interface
     wie ein Typ. Hier ist das Interface aber leer, es wird also keine Schnittstelle
     definiert. Aber es werden damit stattdessen Tooling-Optionen aktiviert, was
-    Interfaces vom Konzept her eigentlich nicht machen sollten/dürften - dazu gibt es
-    Annotationen!
+    Interfaces vom Konzept her eigentlich nicht machen sollten/dürften - dazu gibt
+    es Annotationen!
     :::
 
 -   Schreiben von Objekten (samt Zustand) in Streams
@@ -174,8 +176,8 @@ strukturelle Änderungen an der Klasse ergeben!
 ::: notes
 # Bemerkungen
 
-Es existieren diverse weitere Fallstricke und Probleme, siehe [@Bloch2018] Kapitel 11
-"Serialization".
+Es existieren diverse weitere Fallstricke und Probleme, siehe [@Bloch2018] Kapitel
+11 "Serialization".
 
 Man kann in den `ObjectOutputStream` nicht nur ein Objekt schreiben, sondern mehrere
 Objekte und Variablen schreiben lassen. In dieser Reihenfolge muss man diese dann
@@ -224,8 +226,8 @@ href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master
 :::
 
 ::: outcomes
--   k2: Was ist ein Marker-Interface und warum ist dies eine der großen Design-Sünden
-    in Java?
+-   k2: Was ist ein Marker-Interface und warum ist dies eine der großen
+    Design-Sünden in Java?
 -   k2: Erklären Sie den Prozess der Serialisierung und De-Serialisierung. Worauf
     müssen Sie achten?
 -   k3: Serialisierung von Objekten und Programmzuständen
@@ -242,9 +244,9 @@ Implementieren Sie die beiden Klassen entsprechend dem UML-Diagram:
 
 ![](images/uml_serialisierung.png)
 
-Objekte vom Typ `Person` sowie `Address` sollen serialisierbar sein (vgl. Vorlesung).
-Dabei soll das Passwort nicht serialisiert bzw. gespeichert werden, alle anderen
-Eigenschaften von `Person` sollen serialisierbar sein.
+Objekte vom Typ `Person` sowie `Address` sollen serialisierbar sein (vgl.
+Vorlesung). Dabei soll das Passwort nicht serialisiert bzw. gespeichert werden, alle
+anderen Eigenschaften von `Person` sollen serialisierbar sein.
 
 *Hinweis*: Verwenden Sie zur Umsetzung
 [java.io.Serializable](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html).

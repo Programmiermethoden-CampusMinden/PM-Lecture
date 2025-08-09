@@ -13,8 +13,8 @@ zu knacken.
 
 # Voraussetzung
 
-Um diese Aufgabe lösen zu können, müssen Sie vorher ["Item"](taskloot-item.md) gelöst
-haben.
+Um diese Aufgabe lösen zu können, müssen Sie vorher ["Item"](taskloot-item.md)
+gelöst haben.
 
 # Lockpicking
 
@@ -25,7 +25,7 @@ Führen Sie eine Codeanalyse durch und erklären Sie die Funktionalität.
 Implementieren Sie eine Möglichkeit, dass Schatzkisten verschlossen sein können und
 nur mit einen bestimmten Schlüssel geöffnet werden können.
 
-Recherchieren Sie nach "Lockpicking-Minigames" aus anderen Spielen und implementieren
-Sie eine Umsetzung für Ihr Spiel. Wenn der Spieler nicht den passenden Schlüssel zu
-einer Schatzkiste gefunden hat, soll er die Schatzkiste durch das Lösen des
-Mini-Spiels öffnen können.
+Recherchieren Sie nach "Lockpicking-Minigames" aus anderen Spielen und
+implementieren Sie eine Umsetzung für Ihr Spiel. Wenn der Spieler nicht den
+passenden Schlüssel zu einer Schatzkiste gefunden hat, soll er die Schatzkiste durch
+das Lösen des Mini-Spiels öffnen können.

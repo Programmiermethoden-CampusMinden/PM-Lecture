@@ -9,8 +9,8 @@ title: Charakterklassen
 
 In Rollenspielen gibt die Charakterklasse an, welche Werte (Anzahl der Lebenspunkte,
 Kampfschaden, [Mana-Punkte](https://de.wikipedia.org/wiki/Mana_(Spiele)) etc.) die
-Spielfigur hat, welche Waffen sie verwenden und welche Fähigkeiten sie erlernen kann.
-Typische Charakterklassen sind Krieger, Zauberer oder Schurke.
+Spielfigur hat, welche Waffen sie verwenden und welche Fähigkeiten sie erlernen
+kann. Typische Charakterklassen sind Krieger, Zauberer oder Schurke.
 
 In dieser Aufgabe sollen Sie verschiedene Charakterklassen implementieren.
 
@@ -32,11 +32,12 @@ Bezeichnung.
 
 In den Vorgaben existiert bereits ein
 [Stats-Component](https://github.com/Dungeon-CampusMinden/Dungeon/blob/master/dungeon/src/contrib/entities/EntityFactory.java).
-Führen Sie eine Codeanalyse durch und erklären Sie die Funktionalität des Components.
+Führen Sie eine Codeanalyse durch und erklären Sie die Funktionalität des
+Components.
 
-Implementieren Sie nun die verschiedenen Charakterklassen im Sinne des ECS-Gedankens.
-Überlegen Sie auch, welche Pattern Sie ggf. verwenden können. Begründen Sie Ihre
-Entscheidungen schriftlich.
+Implementieren Sie nun die verschiedenen Charakterklassen im Sinne des
+ECS-Gedankens. Überlegen Sie auch, welche Pattern Sie ggf. verwenden können.
+Begründen Sie Ihre Entscheidungen schriftlich.
 
 Zu Beginn des Spiels soll der Spieler die Klasse auswählen können (oder haben Sie
 eine bessere Idee?).

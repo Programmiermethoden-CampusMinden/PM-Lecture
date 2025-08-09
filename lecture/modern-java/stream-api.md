@@ -29,8 +29,8 @@ Terminale Operationen wie `count()`, `forEach()`, `allMatch()` oder `collect()`
 
 stoßen die Verarbeitung des Streams an und schließen den Stream damit ab.
 
-Wir können hier nur die absoluten Grundlagen betrachten. Die Stream-API ist sehr groß
-und mächtig und lohnt die weitere selbstständige Auseinandersetzung :-)
+Wir können hier nur die absoluten Grundlagen betrachten. Die Stream-API ist sehr
+groß und mächtig und lohnt die weitere selbstständige Auseinandersetzung :-)
 :::
 
 ::: youtube
@@ -45,10 +45,10 @@ und mächtig und lohnt die weitere selbstständige Auseinandersetzung :-)
 Es wurden Studis, Studiengänge und Fachbereiche modelliert (aus Gründen der
 Übersichtlichkeit einfach als Record-Klassen).
 
-Nun soll pro Fachbereich die Anzahl der Studis ermittelt werden, die bereits 100 ECTS
-oder mehr haben. Dazu könnte man über alle Studiengänge im Fachbereich iterieren, und
-in der inneren Schleife über alle Studis im Studiengang. Dann filtert man alle
-Studis, deren ECTS größer 100 sind und erhöht jeweils den Zähler:
+Nun soll pro Fachbereich die Anzahl der Studis ermittelt werden, die bereits 100
+ECTS oder mehr haben. Dazu könnte man über alle Studiengänge im Fachbereich
+iterieren, und in der inneren Schleife über alle Studis im Studiengang. Dann filtert
+man alle Studis, deren ECTS größer 100 sind und erhöht jeweils den Zähler:
 :::
 
 ``` java
@@ -168,11 +168,12 @@ Alternativ bietet das Interface `Stream` verschiedene statische Methoden wie
 auch mit Arrays ...
 
 Und schließlich kann man per `Stream.generate()` einen Stream anlegen, wobei als
-Argument ein "Supplier" (Interface `java.util.function.Supplier<T>`) übergeben werden
-muss. Dieses Argument wird dann benutzt, um die Daten für den Stream zu generieren.
+Argument ein "Supplier" (Interface `java.util.function.Supplier<T>`) übergeben
+werden muss. Dieses Argument wird dann benutzt, um die Daten für den Stream zu
+generieren.
 
-Wenn man aufmerksam hinschaut, findet man an verschiedensten Stellen die Möglichkeit,
-die Daten per Stream zu verarbeiten, u.a. bei regulären Ausdrücken.
+Wenn man aufmerksam hinschaut, findet man an verschiedensten Stellen die
+Möglichkeit, die Daten per Stream zu verarbeiten, u.a. bei regulären Ausdrücken.
 
 Man kann per `Collection#parallelStream()` auch parallele Streams erzeugen, die
 intern das "Fork&Join-Framework" nutzen. Allerdings sollte man nur dann parallele
@@ -201,25 +202,25 @@ demonstriert.
 
 Die Methode `peek()` liefert einen Stream zurück, die aus den Elementen des
 Eingabestroms bestehen. Auf jedes Element wird die Methode `void accept(T)` des
-`Consumer<T>` angewendet (Argument der Methode), was aber nicht zu einer Änderung der
-Daten führt. **Hinweis**: Diese Methode dient vor allem zu Debug-Zwecken! Durch den
-Seiteneffekt kann die Methode eine schlechtere Laufzeit zur Folge haben oder sogar
-eine sonst mögliche parallele Verarbeitung verhindern oder durch eine parallele
-Verarbeitung verwirrende Ergebnisse zeigen!
+`Consumer<T>` angewendet (Argument der Methode), was aber nicht zu einer Änderung
+der Daten führt. **Hinweis**: Diese Methode dient vor allem zu Debug-Zwecken! Durch
+den Seiteneffekt kann die Methode eine schlechtere Laufzeit zur Folge haben oder
+sogar eine sonst mögliche parallele Verarbeitung verhindern oder durch eine
+parallele Verarbeitung verwirrende Ergebnisse zeigen!
 
 Die Methode `map()` liefert ebenfalls einen Stream zurück, der durch die Anwendung
 der Methode `R apply(T)` der als Argument übergebenen `Function<T,R>` auf jedes
-Element des Eingabestroms entsteht. Damit lassen sich die Elemente des ursprünglichen
-Streams verändern; für jedes Element gibt es im Ergebnis-Stream ebenfalls ein Element
-(der Typ ändert sich, aber nicht die Anzahl der Elemente).
+Element des Eingabestroms entsteht. Damit lassen sich die Elemente des
+ursprünglichen Streams verändern; für jedes Element gibt es im Ergebnis-Stream
+ebenfalls ein Element (der Typ ändert sich, aber nicht die Anzahl der Elemente).
 
 Mit der Methode `filter()` wird ein Stream erzeugt, der alle Objekte des
 Eingabe-Streams enthält, auf denen die Anwendung der Methode `boolean test(T)` des
 Arguments `Predicate<T>` zu `true` evaluiert (der Typ und Inhalt der Elemente ändert
 sich nicht, aber die Anzahl der Elemente).
 
-Mit `sorted()` wird ein Stream erzeugt, der die Elemente des Eingabe-Streams sortiert
-(existiert auch mit einem `Comparator<T>` als Parameter).
+Mit `sorted()` wird ein Stream erzeugt, der die Elemente des Eingabe-Streams
+sortiert (existiert auch mit einem `Comparator<T>` als Parameter).
 
 Diese Methoden sind alles **intermediäre** Operationen. Diese arbeiten auf einem
 Stream und erzeugen einen neuen Stream und werden erst dann ausgeführt, wenn eine
@@ -266,18 +267,19 @@ private static long getCountFB2(Fachbereich fb) {
 
 ::: notes
 Dafür ist die Methode `flatMap()` die Lösung. Diese Methode bekommt als Argument ein
-Objekt vom Typ `Function<? super T, ? extends Stream<? extends R>>` mit einer Methode
-`Stream<? extends R> apply(T)`. Die Methode `flatMap()` verarbeitet den Stream in
-zwei Schritten:
+Objekt vom Typ `Function<? super T, ? extends Stream<? extends R>>` mit einer
+Methode `Stream<? extends R> apply(T)`. Die Methode `flatMap()` verarbeitet den
+Stream in zwei Schritten:
 
 1.  Mappe über alle Elemente des Eingabe-Streams mit der Funktion. Im Beispiel würde
     also aus einem `Stream<Studiengang>` jeweils ein `Stream<Stream<Studi>>`, also
     alle `Studiengang`-Objekte werden durch je ein `Stream<Studi>`-Objekt ersetzt.
     Wir haben jetzt also einen Stream von `Stream<Studi>`-Objekten.
 
-2.  "Klopfe den Stream wieder flach", d.h. nimm die einzelnen `Studi`-Objekte aus den
-    `Stream<Studi>`-Objekten und setze diese stattdessen in den Stream. Das Ergebnis
-    ist dann wie gewünscht ein `Stream<Studi>` (Stream mit `Studi`-Objekten).
+2.  "Klopfe den Stream wieder flach", d.h. nimm die einzelnen `Studi`-Objekte aus
+    den `Stream<Studi>`-Objekten und setze diese stattdessen in den Stream. Das
+    Ergebnis ist dann wie gewünscht ein `Stream<Studi>` (Stream mit
+    `Studi`-Objekten).
 :::
 
 ``` java
@@ -331,15 +333,16 @@ Es gibt viele verschiedene terminale Operationen. Wir haben bereits `count()` un
 `forEach()` gesehen. In der Sitzung zu ["Optionals"](optional.md) werden wir noch
 `findFirst()` näher kennenlernen.
 
-Daneben gibt es beispielsweise noch `allMatch()`, `anyMatch()` und `noneMatch()`, die
-jeweils ein Prädikat testen und einen Boolean zurückliefern (matchen alle, mind.
+Daneben gibt es beispielsweise noch `allMatch()`, `anyMatch()` und `noneMatch()`,
+die jeweils ein Prädikat testen und einen Boolean zurückliefern (matchen alle, mind.
 eines oder keines der Objekte im Stream).
 
-Mit `min()` und `max()` kann man sich das kleinste und das größte Element des Streams
-liefern lassen. Beide Methoden benötigen dazu einen `Comparator<T>` als Parameter.
+Mit `min()` und `max()` kann man sich das kleinste und das größte Element des
+Streams liefern lassen. Beide Methoden benötigen dazu einen `Comparator<T>` als
+Parameter.
 
-Mit der Methode `collect()` kann man eine der drei Methoden aus `Collectors` über den
-Stream laufen lassen und eine `Collection` erzeugen lassen:
+Mit der Methode `collect()` kann man eine der drei Methoden aus `Collectors` über
+den Stream laufen lassen und eine `Collection` erzeugen lassen:
 
 1.  `toList()` sammelt die Elemente in ein `List`-Objekt (bzw. direkt mit
     `stream.toList()` (ab Java16))
@@ -361,8 +364,8 @@ href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master
 
 -   Operationen können die Werte im Stream ändern (`map`) oder die Anzahl (`filter`)
 
--   Keine Streams in Attributen/Variablen speichern oder als Argumente übergeben: Sie
-    könnten bereits "gebraucht" sein!
+-   Keine Streams in Attributen/Variablen speichern oder als Argumente übergeben:
+    Sie könnten bereits "gebraucht" sein!
 
     =\> Ein Stream sollte immer sofort nach der Erzeugung benutzt werden
 

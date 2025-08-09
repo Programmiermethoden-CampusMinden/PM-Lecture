@@ -16,7 +16,8 @@ In den Vorgaben sind bereits
 [Items](https://github.com/Dungeon-CampusMinden/Dungeon/blob/master/dungeon/src/contrib/item/Item.java)
 und ein
 [Inventory-Component](https://github.com/Dungeon-CampusMinden/Dungeon/blob/master/dungeon/src/contrib/components/InventoryComponent.java)
-implementiert. Führen Sie eine Codeanalyse durch und erklären Sie die Funktionalität.
+implementiert. Führen Sie eine Codeanalyse durch und erklären Sie die
+Funktionalität.
 
 Implementieren Sie mindestens drei verschiedene Typen von Gegenständen
 (beispielsweise Tränke, Nahrung, Zaubersprüchen, Rüstungen, Waffen, ...).

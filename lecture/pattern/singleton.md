@@ -8,12 +8,12 @@ Wenn von einer Klasse nur genau ein Objekt angelegt werden kann, nennt man dies 
 das "Singleton-Pattern".
 
 Dazu muss verhindert werden, dass der Konstruktor aufgerufen werden kann.
-Üblicherweise "versteckt" man diesen einfach (Sichtbarkeit auf `private` setzen). Für
-den Zugriff auf die Instanz bietet man eine statische Methode an.
+Üblicherweise "versteckt" man diesen einfach (Sichtbarkeit auf `private` setzen).
+Für den Zugriff auf die Instanz bietet man eine statische Methode an.
 
 Im Prinzip kann man die Instanz direkt beim Laden der Klasse anlegen ("Eager") oder
-abwarten, bis die Instanz über die statische Methode angefordert wird, und das Objekt
-erst dann anlegen ("Lazy").
+abwarten, bis die Instanz über die statische Methode angefordert wird, und das
+Objekt erst dann anlegen ("Lazy").
 :::
 
 ::: youtube
@@ -33,9 +33,9 @@ Logger l = Logger.getLogger(MyClass.class.getName());
 ```
 
 ::: notes
-Von den Enum-Konstanten soll es nur genau eine Instantiierung, also jeweils nur genau
-ein Objekt geben. Ähnlich war es beim Logging: Für jeden Namen soll/darf es nur einen
-tatsächlichen Logger (== Objekt) geben.
+Von den Enum-Konstanten soll es nur genau eine Instantiierung, also jeweils nur
+genau ein Objekt geben. Ähnlich war es beim Logging: Für jeden Namen soll/darf es
+nur einen tatsächlichen Logger (== Objekt) geben.
 
 Dies nennt man "**Singleton Pattern**".
 
@@ -113,9 +113,9 @@ Sie schaffen damit eine globale Variable!
 ::: notes
 Da es von der Klasse nur eine Instanz gibt, und Sie sich diese dank der statischen
 Methode an jeder Stelle im Programm "geben" lassen können, haben Sie in der Praxis
-eine globale Variable geschaffen. Das kann direkt zu schlechter Programmierung (ver-)
-führen. Zudem wird der Code schwerer lesbar/navigierbar, da diese Singletons nicht
-über die Schnittstellen von Methoden übergeben werden müssen.
+eine globale Variable geschaffen. Das kann direkt zu schlechter Programmierung
+(ver-) führen. Zudem wird der Code schwerer lesbar/navigierbar, da diese Singletons
+nicht über die Schnittstellen von Methoden übergeben werden müssen.
 
 Nutzen Sie das Pattern **sparsam**.
 :::
@@ -136,8 +136,8 @@ Singleton-Pattern: Klasse, von der nur genau ein Objekt instantiiert werden kann
 :::
 
 ::: outcomes
--   k2: Was ist ein Singleton? Was ist der Unterschied zw. einem Lazy und einem Eager
-    Singleton?
+-   k2: Was ist ein Singleton? Was ist der Unterschied zw. einem Lazy und einem
+    Eager Singleton?
 -   k3: Anwendung des Singleton-Patterns
 :::
 

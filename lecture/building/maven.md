@@ -16,8 +16,8 @@ Die Maven-Goals sind auswählbare Ziele und werden durch Plugins bereitgestellt.
 Zwischen den Goals sind Abhängigkeiten möglich (und bereits eingebaut). Über
 Properties kann man noch Namen und Versionsnummern o.ä. definieren.
 
-Abhängigkeiten zu externen Bibliotheken werden als Dependencies formuliert: Am besten
-den Abschnitt von Maven-Central kopieren.
+Abhängigkeiten zu externen Bibliotheken werden als Dependencies formuliert: Am
+besten den Abschnitt von Maven-Central kopieren.
 :::
 
 ::: youtube
@@ -47,8 +47,8 @@ Java-Entwicklungsprozess "eingebaut": Im Ant-Skript muss alles, was man tun möc
 explizit als Target formuliert werden, d.h. auch ein Kompilieren der Sourcen oder
 Ausführen der Tests muss extra als Target ins Ant-Skript geschrieben werden, um
 benutzbar zu sein. In Maven ist dieses Modell bereits implementiert, d.h. hier muss
-man lediglich zusätzliche oder abweichende Dinge im XML-File konfigurieren. Das nennt
-man auch ["*convention over
+man lediglich zusätzliche oder abweichende Dinge im XML-File konfigurieren. Das
+nennt man auch ["*convention over
 configuration*"](https://en.wikipedia.org/wiki/Convention_over_configuration).
 
 Der Maven-Aufruf
@@ -58,8 +58,8 @@ erzeugt mit Hilfe des Plugins `archetype`, welches das Ziel (engl.: "*Maven goal
 initialen Package-Struktur `de.hsbi.pm`. Das von Maven für die Projekterstellung
 genutzte Plugin ist unter der ID `maven-archetype-quickstart` in den
 Maven-Repositories (etwa [Maven-Central](https://mvnrepository.com/repos/central))
-verfügbar, hier kann man mit der zusätzlichen Option `-DarchetypeVersion=1.4` auf die
-letzte Version schalten.
+verfügbar, hier kann man mit der zusätzlichen Option `-DarchetypeVersion=1.4` auf
+die letzte Version schalten.
 
 Die erzeugte Ordnerstruktur entspricht der Standardstruktur von Gradle (Gradle hat
 diese quasi von Maven übernommen). Die Konfigurationsdatei für Maven hat den Namen
@@ -120,8 +120,9 @@ bereit ("Project Object Model").
 Es werden mindestens der Name des Projekts sowie die Abhängigkeiten definiert.
 
 Die `groupId` ist ein eindeutiger Bezeichner für die Organisation oder den Autor des
-Projekts. Oft wird hier einfach wie im obigen Beispiel eine Package-Struktur genutzt,
-aber wie im Fall von JUnit kann dies auch ein einfacher String (dort "`junit`") sein.
+Projekts. Oft wird hier einfach wie im obigen Beispiel eine Package-Struktur
+genutzt, aber wie im Fall von JUnit kann dies auch ein einfacher String (dort
+"`junit`") sein.
 
 Die `artifactId` ist der eindeutige Name für das Projekt, d.h. unter diesem Namen
 wird das generierte Jar-File im Maven-Repository zu finden sein (sofern es denn

@@ -16,7 +16,7 @@ finden:
 # Gruppe "Basics"
 
 | Aufgabe | Punkte | Abhängig von |
-|:-------------------------|:---|:-------------------------------------------------------|
+|:-------------------------|:----|:-----------------------------------------------------|
 | [Fallen](group_basics/taskbasic-fallen.md) | 5 |  |
 | [Fähigkeiten](group_basics/taskbasic-skills.md) | 10 |  |
 | [Charakterklassen](group_basics/taskbasic-charakterklassen.md) | 5 | ["Nahkampf"](group_monster/tasknpc-nahkampf.md) oder ["Fernkampf"](group_monster/tasknpc-fernkampf.md) und ["Fähigkeiten"](group_basics/taskbasic-skills.md) |
@@ -27,7 +27,7 @@ finden:
 # Gruppe "Monster"
 
 | Aufgabe | Punkte | Abhängig von |
-|:-----------------------------|:----|:-------------------------------------------------|
+|:-----------------------------|:-----|:------------------------------------------------|
 | [Monster](group_monster/tasknpc-monster.md) | 5 |  |
 | [Fernkampf](group_monster/tasknpc-fernkampf.md) | 5 | ["Monster"](group_monster/tasknpc-monster.md) |
 | [Nahkampf](group_monster/tasknpc-nahkampf.md) | 5 | ["Monster"](group_monster/tasknpc-monster.md) |
@@ -39,7 +39,7 @@ finden:
 # Gruppe "Loot"
 
 | Aufgabe | Punkte | Abhängig von |
-|:-----------------------------|:----|:-------------------------------------------------|
+|:-----------------------------|:-----|:------------------------------------------------|
 | [Items](group_loot/taskloot-item.md) | 5 |  |
 | [Freundlicher NPC-Geist](group_loot/taskloot-npc.md) | 5 |  |
 | [Dialogsystem](group_loot/taskloot-dialogsystem.md) | 5 |  |
@@ -53,7 +53,7 @@ finden:
 # Gruppe "Bounty"
 
 | Aufgabe | Punkte |
-|:------------------------------------------------------------------------------|:-----|
+|:----------------------------------------------------------------------------|:------|
 | [5P Bounty](https://github.com/Dungeon-CampusMinden/Dungeon/issues?q=is%3Aopen+is%3Aissue+label%3Abounty%3A5p+-linked%3Apr) | 5 |
 | [10P Bounty](https://github.com/Dungeon-CampusMinden/Dungeon/issues?q=is%3Aopen+is%3Aissue+label%3Abounty%3A10p+-linked%3Apr) | 10 |
 
@@ -65,6 +65,6 @@ angebotene Aufgaben können Sie nicht mehr zur Bearbeitung wählen.
 *Hinweis*: Für die Bounty-Aufgaben können Sie zusätzlich bis zu 3 Bonus-Punkte
 bekommen, wenn Sie Ihre Lösung als
 [Pull-Request](https://github.com/Dungeon-CampusMinden/Dungeon/compare) im
-[Dungeon-Repo](https://github.com/Dungeon-CampusMinden/Dungeon) einreichen und Ihr PR
-vom Dungeon-Team akzeptiert (gemergt) wird. Es kann nur ein PR pro Bounty-Aufgabe
+[Dungeon-Repo](https://github.com/Dungeon-CampusMinden/Dungeon) einreichen und Ihr
+PR vom Dungeon-Team akzeptiert (gemergt) wird. Es kann nur ein PR pro Bounty-Aufgabe
 gemergt werden, die Entscheidung liegt beim Dozenten.

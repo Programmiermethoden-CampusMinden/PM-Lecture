@@ -30,11 +30,11 @@ Wer in "Programmiermethoden" noch eine Prüfung benötigt, kann diese in den
 Prüfungszeiträumen des Sommersemesters (und ggf. des Wintersemesters, falls
 angeboten) als Klausur nachholen.
 
-Dabei gelten folgende Regelungen (vgl. Mail von Frau Seele vom 28.09.2023) für offene
-Prüfungsverfahren:
+Dabei gelten folgende Regelungen (vgl. Mail von Frau Seele vom 28.09.2023) für
+offene Prüfungsverfahren:
 
--   Parcoursprüfung: Bei einer offenen Parcoursprüfung bildet die Klausur die gesamte
-    Prüfung.
+-   Parcoursprüfung: Bei einer offenen Parcoursprüfung bildet die Klausur die
+    gesamte Prüfung.
 -   Performanzprüfung:
     -   Der praktische Teil der Performanzprüfung entfällt, die Note und CP werden
         über eine Klausur bestimmt.
@@ -55,10 +55,10 @@ vom Studierendenservice bekanntgegeben. (vgl. LSF und
 Sie haben letztes Semester in **OOP** die *wichtigsten* Elemente und Konzepte der
 Programmiersprache Java kennen gelernt.
 
-In diesem Modul geht es darum, diese Kenntnisse sowohl auf der Java- als auch auf der
-Methoden-Seite so zu erweitern, dass Sie gemeinsam größere Anwendungen erstellen und
-pflegen können. Sie werden fortgeschrittene Konzepte in Java kennenlernen und sich
-mit etablierten Methoden in der Softwareentwicklung wie Versionierung von Code,
+In diesem Modul geht es darum, diese Kenntnisse sowohl auf der Java- als auch auf
+der Methoden-Seite so zu erweitern, dass Sie gemeinsam größere Anwendungen erstellen
+und pflegen können. Sie werden fortgeschrittene Konzepte in Java kennenlernen und
+sich mit etablierten Methoden in der Softwareentwicklung wie Versionierung von Code,
 Einhaltung von Coding Conventions, Grundlagen des Softwaretests, Anwendung von
 Refactoring, Einsatz von Build-Tools und Logging auseinander setzen. Wenn uns dabei
 ein Entwurfsmuster "über den Weg läuft", werden wir die Gelegenheit nutzen und uns
@@ -129,7 +129,7 @@ Durchführung als **Flipped Classroom**: Alle Sitzungen online/per Zoom
 ## Praktikum
 
 | Woche | Blatt | Abgabe ILIAS und Peer-Feedback (ILIAS) | Vorstellung Praktikum |
-|:----:|:------------------|:-------------------------------------------|:----------------|
+|:-----:|:------------------|:-----------------------------------------|:----------------|
 | 16 | [B01a](homework/b01a.md) | Abgabe: Do, 20.04., 08 Uhr; Peer-Feedback: Fr, 21.04., 08 Uhr | Praktikum: Fr, 21.04. |
 | 17 | [B01b](homework/b01b.md) | Abgabe: Do, 27.04., 08 Uhr; Peer-Feedback: Fr, 28.04., 08 Uhr | Praktikum: Fr, 28.04. |
 | 18 | [B02a](homework/b02a.md) | Abgabe: Do, 04.05., 08 Uhr; Peer-Feedback: Fr, 05.05., 08 Uhr | Praktikum: Fr, 05.05. |
@@ -188,9 +188,9 @@ Dozenten.
     [Alternativen](https://code.visualstudio.com/docs/languages/java#_install-a-java-development-kit-jdk),
     bitte 64-bit Version nutzen)
 -   IDE: [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/) oder
-    [IntelliJ IDEA (Community Edition)](https://www.jetbrains.com/idea/) oder [Visual
-    Studio Code](https://code.visualstudio.com/) oder [Vim](https://www.vim.org/)
-    oder ...
+    [IntelliJ IDEA (Community Edition)](https://www.jetbrains.com/idea/) oder
+    [Visual Studio Code](https://code.visualstudio.com/) oder
+    [Vim](https://www.vim.org/) oder ...
 -   [Git](https://git-scm.com/)
 
 # Förderungen und Kooperationen
@@ -208,11 +208,11 @@ Fellowships*).
 Diese Vorlesung wird zudem vom Projekt ["Digitalbaukasten für kompetenzorientiertes
 Selbststudium"](https://www.digikos.de) (*DigikoS*) unterstützt. Ein vom
 DigikoS-Projekt ausgebildeter Digital Learning Scout hat insbesondere die
-Koordination der digitalen Gruppenarbeiten, des Peer-Feedbacks und der Postersessions
-in ILIAS technisch und inhaltlich begleitet. DigikoS wird als Verbundprojekt von der
-Stiftung Innovation in der Hochschullehre gefördert.
+Koordination der digitalen Gruppenarbeiten, des Peer-Feedbacks und der
+Postersessions in ILIAS technisch und inhaltlich begleitet. DigikoS wird als
+Verbundprojekt von der Stiftung Innovation in der Hochschullehre gefördert.
 
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 # LICENSE
 

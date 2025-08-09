@@ -11,26 +11,26 @@ Programms reagieren kann.
 
 Mit Hilfe von Exceptions lassen sich Fehlerfälle im Programmablauf deklarieren und
 behandeln. Methoden können/müssen mit dem Keyword `throws` gefolgt vom Namen der
-Exception deklarieren, dass sie im Fehlerfall diese spezifische Exception werfen (und
-nicht selbst behandeln).
+Exception deklarieren, dass sie im Fehlerfall diese spezifische Exception werfen
+(und nicht selbst behandeln).
 
 Zum Exception-Handling werden die Keywords `try`, `catch` und `finally` verwendet.
 Dabei wird im `try`-Block der Code geschrieben, der einen potenziellen Fehler wirft.
 Im `catch`-Block wird das Verhalten implementiert, dass im Fehlerfall ausgeführt
-werden soll, und im `finally`-Block kann optional Code geschrieben werden, der sowohl
-im Erfolgs- als auch Fehlerfall ausgeführt wird.
+werden soll, und im `finally`-Block kann optional Code geschrieben werden, der
+sowohl im Erfolgs- als auch Fehlerfall ausgeführt wird.
 
 Es wird zwischen **checked** Exceptions und **unchecked** Exceptions unterschieden.
 Checked Exceptions sind für erwartbare Fehlerfälle gedacht, die nicht vom Programm
-ausgeschlossen werden können, wie das Fehlen einer Datei, die eingelesen werden soll.
-Checked Exceptions müssen deklariert oder behandelt werden. Dies wird vom Compiler
-überprüft.
+ausgeschlossen werden können, wie das Fehlen einer Datei, die eingelesen werden
+soll. Checked Exceptions müssen deklariert oder behandelt werden. Dies wird vom
+Compiler überprüft.
 
 Unchecked Exceptions werden für Fehler in der Programmlogik verwendet, etwa das
 Teilen durch 0 oder Index-Fehler. Sie deuten auf fehlerhafte Programmierung,
 fehlerhafte Logik oder beispielsweise mangelhafte Eingabeprüfung in. Unchecked
-Exceptions müssen nicht deklariert oder behandelt werden. Unchecked Exceptions leiten
-von `RuntimeException` ab.
+Exceptions müssen nicht deklariert oder behandelt werden. Unchecked Exceptions
+leiten von `RuntimeException` ab.
 
 Als Faustregel gilt: Wenn der Aufrufer sich von einer Exception-Situation erholen
 kann, sollte man eine checked Exception nutzen. Wenn der Aufrufer vermutlich nichts
@@ -80,7 +80,8 @@ if (x.isPresent()) {
 -   Da `int` nicht `null` sein kann, muss ein `Integer` Objekt erzeugt und
     zurückgegeben werden: Overhead wg. Auto-Boxing und -Unboxing!
 -   Der Aufrufer muss auf `null` prüfen.
--   Es wird nicht kommuniziert, warum `null` zurückgegeben wird. Was ist das Problem?
+-   Es wird nicht kommuniziert, warum `null` zurückgegeben wird. Was ist das
+    Problem?
 -   Was ist, wenn `null` ein gültiger Rückgabewert sein soll?
 :::
 
@@ -124,22 +125,24 @@ if (x.isPresent()) {
 
 Beispiele checked Exception:
 
--   Es soll eine Abfrage an eine externe API geschickt werden. Diese ist aber aktuell
-    nicht zu erreichen. "Erholung": Anfrage noch einmal schicken.
+-   Es soll eine Abfrage an eine externe API geschickt werden. Diese ist aber
+    aktuell nicht zu erreichen. "Erholung": Anfrage noch einmal schicken.
 -   Es soll eine Datei geöffnet werden. Diese ist aber nicht unter dem angegebenen
-    Pfad zu finden oder die Berechtigungen stimmen nicht. "Erholung": Aufrufer öffnet
-    neuen File-Picker, um es noch einmal mit einer anderen Datei zu versuchen.
+    Pfad zu finden oder die Berechtigungen stimmen nicht. "Erholung": Aufrufer
+    öffnet neuen File-Picker, um es noch einmal mit einer anderen Datei zu
+    versuchen.
 
 Beispiele unchecked Exception:
 
 -   Eine `for`-Loop über ein Array ist falsch programmiert und will auf einen Index
     im Array zugreifen, der nicht existiert. Hier kann der Aufrufer nicht Sinnvolles
     tun, um sich von dieser Situation zu erholen.
--   Argumente oder Rückgabewerte einer Methode können `null` sein. Wenn man das nicht
-    prüft, sondern einfach Methoden auf dem vermeintlichen Objekt aufruft, wird eine
-    `NullPointerException` ausgelöst, die eine Unterklasse von `RuntimeException` ist
-    und damit eine unchecked Exception. Auch hier handelt es sich um einen Fehler in
-    der Programmlogik, von dem sich der Aufrufer nicht sinnvoll erholen kann.
+-   Argumente oder Rückgabewerte einer Methode können `null` sein. Wenn man das
+    nicht prüft, sondern einfach Methoden auf dem vermeintlichen Objekt aufruft,
+    wird eine `NullPointerException` ausgelöst, die eine Unterklasse von
+    `RuntimeException` ist und damit eine unchecked Exception. Auch hier handelt es
+    sich um einen Fehler in der Programmlogik, von dem sich der Aufrufer nicht
+    sinnvoll erholen kann.
 :::
 
 # *Throws*
@@ -183,17 +186,17 @@ werden, nicht gefangene unchecked Exceptions *können* deklariert werden.
 Wenn mehrere Exceptions an den Aufrufer weitergeleitet werden, werden sie in der
 `throws`-Klausel mit Komma getrennt: `throws Exception1, Exception2, Exception3`.
 
-**Anmerkung**: In beiden obigen Beispielen wurde zur Verdeutlichung, dass die Methode
-`div()` eine Exception wirft, diese per `throws`-Klausel deklariert. Da es sich bei
-den beiden Beispielen aber jeweils um **unchecked Exceptions** handelt, ist dies im
-obigen Beispiel *nicht notwendig*. Der Aufrufer *muss* auch nicht ein passendes
-Exception-Handling einsetzen!
+**Anmerkung**: In beiden obigen Beispielen wurde zur Verdeutlichung, dass die
+Methode `div()` eine Exception wirft, diese per `throws`-Klausel deklariert. Da es
+sich bei den beiden Beispielen aber jeweils um **unchecked Exceptions** handelt, ist
+dies im obigen Beispiel *nicht notwendig*. Der Aufrufer *muss* auch nicht ein
+passendes Exception-Handling einsetzen!
 
 Wenn wir stattdessen eine **checked Exception** werfen würden oder in `div()` eine
 Methode aufrufen würden, die eine checked Exception deklariert hat, *muss* diese
 checked Exception entweder in `div()` gefangen und bearbeitet werden oder aber per
-`throws`-Klausel deklariert werden. Im letzteren Fall *muss* dann der Aufrufer analog
-damit umgehen (fangen oder selbst auch deklarieren). **Dies wird vom Compiler
+`throws`-Klausel deklariert werden. Im letzteren Fall *muss* dann der Aufrufer
+analog damit umgehen (fangen oder selbst auch deklarieren). **Dies wird vom Compiler
 geprüft!**
 :::
 
@@ -237,8 +240,8 @@ try {
 ```
 
 ::: notes
-Eine im `try`-Block auftretende Exception wird der Reihe nach mit den `catch`-Blöcken
-gematcht (vergleichbar mit `switch case`).
+Eine im `try`-Block auftretende Exception wird der Reihe nach mit den
+`catch`-Blöcken gematcht (vergleichbar mit `switch case`).
 
 **Wichtig**: Dabei muss die Vererbungshierarchie beachtet werden. Die
 spezialisierteste Klasse muss ganz oben stehen, die allgemeinste Klasse als letztes.
@@ -272,9 +275,9 @@ try {
 ```
 
 ::: notes
-Der `finally` Block wird sowohl im Fehlerfall als auch im Normalfall aufgerufen. Dies
-wird beispielsweise für Aufräumarbeiten genutzt, etwa zum Schließen von Verbindungen
-oder Input-Streams.
+Der `finally` Block wird sowohl im Fehlerfall als auch im Normalfall aufgerufen.
+Dies wird beispielsweise für Aufräumarbeiten genutzt, etwa zum Schließen von
+Verbindungen oder Input-Streams.
 :::
 
 # *Try*-with-Resources
@@ -319,8 +322,9 @@ Eigene Exceptions können durch Spezialisierung anderer Exception-Klassen realis
 werden. Dabei kann man direkt von `Exception` oder `RuntimeException` ableiten oder
 bei Bedarf von spezialisierteren Exception-Klassen.
 
-Wenn die eigene Exception in der Vererbungshierarchie unter `RuntimeException` steht,
-handelt es sich um eine *unchecked Exception*, sonst um eine *checked Exception*.
+Wenn die eigene Exception in der Vererbungshierarchie unter `RuntimeException`
+steht, handelt es sich um eine *unchecked Exception*, sonst um eine *checked
+Exception*.
 
 In der Benutzung (werfen, fangen, deklarieren) verhalten sich eigene
 Exception-Klassen wie die Exceptions aus dem JDK.
@@ -408,8 +412,9 @@ noch schwer.
 Beispiel für das Behandeln von Exceptions. Einfach nur einen Stacktrace zu printen
 und weiter zu machen, als ob nichts passiert wäre, ist **kein sinnvolles
 Exception-Handling**. Wenn Sie solchen Code schreiben oder sehen, ist das ein
-Anzeichen, dass auf dieser Ebene nicht sinnvoll mit dem Fehler umgegangen werden kann
-und dass man ihn besser an den Aufrufer weiter reichen sollte (siehe nächste Folie).
+Anzeichen, dass auf dieser Ebene nicht sinnvoll mit dem Fehler umgegangen werden
+kann und dass man ihn besser an den Aufrufer weiter reichen sollte (siehe nächste
+Folie).
 
 ## Funktionaler Teil in gemeinsames *Try* und mehrstufiges *Catch*
 
@@ -564,8 +569,8 @@ jeweils "checked" oder "unchecked" sein sollten.
 
 Im Package `finally_resources` finden Sie die Klasse `MyResource`.
 
-Rufen Sie die Methode `MyResource#doSomething` auf, im Anschluss müssen Sie **immer**
-die Methode `MyResource#close` aufrufen.
+Rufen Sie die Methode `MyResource#doSomething` auf, im Anschluss müssen Sie
+**immer** die Methode `MyResource#close` aufrufen.
 
 1.  Zeigen Sie den Aufruf mit `try-catch-finally`.
 2.  Verändern Sie die Vorgaben so, dass Sie den Aufruf mit der

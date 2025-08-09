@@ -30,18 +30,18 @@ Kinder weiter reichen (also auf den Kindern `accept()` mit dem Visitor aufrufen)
 bevor man die `visit()`-Methode des Visitors mit sich selbst als Referenz aufruft.
 Damit ist die Form der Traversierung in den Klassen der Datenstruktur fest verankert
 und über den Visitor findet "nur" noch eine unterschiedliche Form der Verarbeitung
-statt. Alternativ überlässt man es dem Visitor, die Traversierung durchzuführen: Hier
-muss in den `visit()`-Methoden für die einzelnen Elemente entsprechend auf mögliche
-Kinder reagiert werden.
+statt. Alternativ überlässt man es dem Visitor, die Traversierung durchzuführen:
+Hier muss in den `visit()`-Methoden für die einzelnen Elemente entsprechend auf
+mögliche Kinder reagiert werden.
 
 In diesem Pattern findet ein sogenannter "Double-Dispatch" statt: Zur Laufzeit wird
 ein konkreter Visitor instantiiert und über `accept()` an ein Element der
-Datenstruktur übergeben. Dort ist zur Compile-Zeit aber nur der Obertyp der Visitoren
-bekannt, d.h. zur Laufzeit wird hier der konkrete Typ bestimmt und entsprechend die
-richtige `visit()`-Methode auf der "echten" Klasse des Visitors aufgerufen (erster
-Dispatch). Da im Visitor die `visit()`-Methoden für jeden Typ der Datenstrukur
-überladen sind, findet nun zur Laufzeit die Auflösung der korrekten Überladung statt
-(zweiter Dispatch).
+Datenstruktur übergeben. Dort ist zur Compile-Zeit aber nur der Obertyp der
+Visitoren bekannt, d.h. zur Laufzeit wird hier der konkrete Typ bestimmt und
+entsprechend die richtige `visit()`-Methode auf der "echten" Klasse des Visitors
+aufgerufen (erster Dispatch). Da im Visitor die `visit()`-Methoden für jeden Typ der
+Datenstrukur überladen sind, findet nun zur Laufzeit die Auflösung der korrekten
+Überladung statt (zweiter Dispatch).
 :::
 
 ::: youtube
@@ -89,8 +89,8 @@ Knoten im Baum zurückgeführt. Es gibt Knoten mit zwei Kindknoten, und es gibt 
 ohne Kindknoten ("Blätter").
 
 Entsprechend kann man sich einfache Klassen definieren, die die verschiedenen Knoten
-in diesem Parsetree repräsentieren. Als Obertyp könnte es ein (noch leeres) Interface
-`Expr` geben.
+in diesem Parsetree repräsentieren. Als Obertyp könnte es ein (noch leeres)
+Interface `Expr` geben.
 
 ``` java
 public interface Expr {}
@@ -200,8 +200,8 @@ Funktion, mit der man den Ausdruck hübsch ausgeben kann:
 
 ::: notes
 Das fängt an, sich zu wiederholen. Wir implementieren immer wieder ähnliche
-Strukturen, mit denen wir diesen Parsetree traversieren ... Und wir müssen für *jede*
-Erweiterung immer *alle* Expression-Klassen anpassen!
+Strukturen, mit denen wir diesen Parsetree traversieren ... Und wir müssen für
+*jede* Erweiterung immer *alle* Expression-Klassen anpassen!
 
 [Beispiel: direct.DemoExpr]{.ex
 href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/blob/master/markdown/pattern/src/visitor/direct/DemoExpr.java"}
@@ -222,12 +222,12 @@ Das Entwurfsmuster "Besucher" (*Visitor Pattern*) lagert die Aktion beim Besuche
 eines Knotens in eine separate Klasse aus.
 
 Dazu bekommt jeder Knoten im Baum eine neue Methode, die einen Besucher akzeptiert.
-Dieser Besucher kümmert sich dann um die entsprechende Verarbeitung des Knotens, also
-um das Auswerten oder Ausgeben im obigen Beispiel.
+Dieser Besucher kümmert sich dann um die entsprechende Verarbeitung des Knotens,
+also um das Auswerten oder Ausgeben im obigen Beispiel.
 
 Die Besucher haben eine Methode, die für jeden zu bearbeitenden Knoten überladen
-wird. In dieser Methode findet dann die eigentliche Verarbeitung statt: Auswerten des
-Knotens oder Ausgeben des Knotens ...
+wird. In dieser Methode findet dann die eigentliche Verarbeitung statt: Auswerten
+des Knotens oder Ausgeben des Knotens ...
 
 ``` java
 public interface Expr {
@@ -334,8 +334,8 @@ selbst anzustoßen.
 Alternativ könnte auch der Visitor die Traversierung vornehmen. Gerade bei der
 Traversierung von Datenstrukturen ist diese Variante oft von Vorteil, da man hier
 unterschiedliche Traversierungsarten haben möchte (Breitensuche vs. Tiefensuche,
-Pre-Order vs. Inorder vs. Post-Order, ...) und diese elegant in den Visitor verlagern
-kann.
+Pre-Order vs. Inorder vs. Post-Order, ...) und diese elegant in den Visitor
+verlagern kann.
 
 [Beispiel Traversierung intern (in den Knotenklassen):
 visitor.visit.intrav.DemoExpr]{.ex
@@ -434,8 +434,8 @@ In den
 [Vorgaben](https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/tree/master/markdown/pattern/src/challenges/visitor)
 finden Sie Code zur Realisierung von (rudimentären) binären Suchbäumen.
 
-1.  Betrachten Sie die Klassen `BinaryNode` und `Main`. Die Klasse `BinaryNode` dient
-    zur einfachen Repräsentierung von binären Suchbäumen, in `Main` ist ein
+1.  Betrachten Sie die Klassen `BinaryNode` und `Main`. Die Klasse `BinaryNode`
+    dient zur einfachen Repräsentierung von binären Suchbäumen, in `Main` ist ein
     Versuchsaufbau vorbereitet.
 
     -   Implementieren Sie das Visitor-Pattern für den Binärbaum (in den Klassen
@@ -446,8 +446,8 @@ finden Sie Code zur Realisierung von (rudimentären) binären Suchbäumen.
         `binaryTree.accept(nodeVisitor)` und `nodeVisitor.visit(binaryTree)` (3a)?
 
 2.  In `BinaryNode` wird ein Blatt aktuell durch einen Knoten repräsentiert, der für
-    beide Kindbäume den Wert `null` hat. Um Blätter besser zu repräsentieren, gibt es
-    die Klasse `UnaryNode`.
+    beide Kindbäume den Wert `null` hat. Um Blätter besser zu repräsentieren, gibt
+    es die Klasse `UnaryNode`.
 
     -   Passen Sie `BinaryNode` so an, dass die Kindbäume auch `UnaryNode` sein
         können.
@@ -480,6 +480,6 @@ finden Sie Code zur Realisierung von (rudimentären) binären Suchbäumen.
     nicht in der Oberklasse bzw. im gemeinsamen Interface der Knoten implementiert
     werden kann.
 
-7.  Erklären Sie, wieso im Visitor-Pattern in der `visit`-Methode der Visitoren statt
-    `visit(node.left())` der Aufruf `node.left().accept(this)` genutzt wird.
+7.  Erklären Sie, wieso im Visitor-Pattern in der `visit`-Methode der Visitoren
+    statt `visit(node.left())` der Aufruf `node.left().accept(this)` genutzt wird.
 :::

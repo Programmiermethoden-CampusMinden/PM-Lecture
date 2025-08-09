@@ -4,21 +4,22 @@ title: Basics der Versionsverwaltung mit Git (lokale Repos)
 ---
 
 ::: tldr
-Änderungen an Dateien (in der Workingcopy) werden mit `git add` zum "Staging" (Index)
-hinzugefügt. Dies ist eine Art Sammelbereich für Änderungen, die mit dem nächsten
-Commit in das Repository überführt werden. Neue (bisher nicht versionierte Dateien)
-müssen ebenfalls zunächst mit `git add` zum Staging hinzugefügt werden.
+Änderungen an Dateien (in der Workingcopy) werden mit `git add` zum "Staging"
+(Index) hinzugefügt. Dies ist eine Art Sammelbereich für Änderungen, die mit dem
+nächsten Commit in das Repository überführt werden. Neue (bisher nicht versionierte
+Dateien) müssen ebenfalls zunächst mit `git add` zum Staging hinzugefügt werden.
 
 Änderungen kann man mit `git log` betrachten, dabei erhält man u.a. eine Liste der
 Commits und der jeweiligen Commmit-Messages.
 
-Mit `git diff` kann man gezielt Änderungen zwischen Commits oder Branches betrachten.
+Mit `git diff` kann man gezielt Änderungen zwischen Commits oder Branches
+betrachten.
 
 Mit `git tag` kann man bestimmte Commits mit einem "Stempel" (zusätzlicher Name)
 versehen, um diese leichter finden zu können.
 
-Wichtig sind die Commit-Messages: Diese sollten eine kurze Zusammenfassung haben, die
-**aktiv** formuliert wird (was ändert dieser Commit: "Formatiere den Java-Code
+Wichtig sind die Commit-Messages: Diese sollten eine kurze Zusammenfassung haben,
+die **aktiv** formuliert wird (was ändert dieser Commit: "Formatiere den Java-Code
 entsprechend Style"; nicht aber "Java-Code nach Style formatiert"). Falls der
 Kommentar länger sein soll, folgt eine Leerzeile auf die erste Zeile
 (Zusammenfassung) und danach ein Block mit der längeren Erklärung.
@@ -98,9 +99,9 @@ Editors zu vermeiden ... geht einfach schneller ;)
 :::
 
 ::: notes
-Das "staging area" stellt eine Art Zwischenebene zwischen Working Copy und Repository
-dar: Die Änderungen sind temporär "gesichert", aber noch nicht endgültig im
-Repository eingepflegt ("committed").
+Das "staging area" stellt eine Art Zwischenebene zwischen Working Copy und
+Repository dar: Die Änderungen sind temporär "gesichert", aber noch nicht endgültig
+im Repository eingepflegt ("committed").
 
 Man kann den Stage dazu nutzen, um Änderungen an einzelnen Dateien zu sammeln und
 diese dann (in einem Commit) gemeinsam einzuchecken.
@@ -138,8 +139,8 @@ Verhalten. Achtung: Nicht versionierte Dateien bleiben dabei außen vor!
 ::: notes
 # Weitere Datei-Operationen: hinzufügen, umbenennen, löschen
 
--   Neue (unversionierte) Dateien und Änderungen an versionierten Dateien zum Staging
-    hinzufügen: `git add <file>`
+-   Neue (unversionierte) Dateien und Änderungen an versionierten Dateien zum
+    Staging hinzufügen: `git add <file>`
 -   Löschen von Dateien (Repo+Workingcopy): `git rm <file>`
 -   Löschen von Dateien (nur Repo): `git rm --cached <file>`
 -   Verschieben/Umbenennen: `git mv <fileAlt> <fileNeu>`
@@ -297,9 +298,9 @@ enthalten, die gemeinsam einen Sinn ergeben und die (bei Bedarf) gemeinsam
 zurückgesetzt oder verschoben werden können. Das nennt man auch **atomic commit**.
 
 Wenn Sie versuchen, die Änderungen in Ihrem Commit zu beschreiben (siehe nächste
-Folie "Commit-Messages"), dann werden Sie einen *atomic commit* mit einem kurzen Satz
-(natürlich im Imperativ!) beschreiben können. Wenn Sie mehr Text brauchen, haben Sie
-wahrscheinlich keinen *atomic commit* mehr vor sich.
+Folie "Commit-Messages"), dann werden Sie einen *atomic commit* mit einem kurzen
+Satz (natürlich im Imperativ!) beschreiben können. Wenn Sie mehr Text brauchen,
+haben Sie wahrscheinlich keinen *atomic commit* mehr vor sich.
 
 **Lesen Sie dazu auch [How atomic Git commits dramatically increased my
 productivity - and will increase yours
@@ -367,9 +368,9 @@ Messages"](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 Denken Sie sich die Commit-Message als E-Mail an einen zukünftigen Entwickler, der
 das in fünf Jahren liest!
 
-Vom Aufbau her hat eine E-Mail auch eine Summary und dann den eigentlichen Inhalt ...
-Erklären Sie das **"WARUM"** der Änderung! (Das "WER", "WAS", "WANN" wird bereits
-automatisch von Git aufgezeichnet ...)
+Vom Aufbau her hat eine E-Mail auch eine Summary und dann den eigentlichen Inhalt
+... Erklären Sie das **"WARUM"** der Änderung! (Das "WER", "WAS", "WANN" wird
+bereits automatisch von Git aufgezeichnet ...)
 
 ::: center
 **Lesen (und beachten) Sie unbedingt auch ["How to Write a Git Commit
@@ -413,7 +414,8 @@ Message"](https://cbea.ms/git-commit/)!**
 2.  Fügen Sie Dateien dem Verzeichnis hinzu und stellen Sie *einige* davon unter
     Versionskontrolle.
 3.  Ändern Sie eine Datei und versionieren Sie die Änderung.
-4.  Was ist der Unterschied zwischen "`git add .; git commit`" und "`git commit -a`"?
+4.  Was ist der Unterschied zwischen "`git add .; git commit`" und
+    "`git commit -a`"?
 5.  Wie finden Sie heraus, welche Dateien geändert wurden?
 6.  Entfernen Sie eine Datei aus der Versionskontrolle, aber nicht aus dem
     Verzeichnis!
@@ -424,7 +426,8 @@ Message"](https://cbea.ms/git-commit/)!**
 10. Wie können Sie einen früheren Stand einer Datei wiederherstellen? Wie finden Sie
     überhaupt den Stand?
 11. Legen Sie sich ein Java-Projekt in Ihrer IDE an an. Stellen Sie dieses Projekt
-    unter Git-Versionskontrolle. Führen Sie die vorigen Schritte mit Ihrer IDE durch.
+    unter Git-Versionskontrolle. Führen Sie die vorigen Schritte mit Ihrer IDE
+    durch.
 
 **Interaktive Git-Tutorials**: Schaffen Sie die Rätsel?
 

@@ -16,10 +16,11 @@ In den Vorgaben ist bereits ein
 [Projectile-System](https://github.com/Dungeon-CampusMinden/Dungeon/blob/master/dungeon/src/contrib/systems/ProjectileSystem.java)
 und ein
 [Feuerball-Skill](https://github.com/Dungeon-CampusMinden/Dungeon/blob/master/dungeon/src/contrib/utils/components/skill/FireballSkill.java)
-implementiert. Führen Sie eine Codeanalyse durch und erklären Sie die Funktionalität.
+implementiert. Führen Sie eine Codeanalyse durch und erklären Sie die
+Funktionalität.
 
-Implementieren Sie ein Magie-Konzept. Der Spieler soll in der Lage sein, verschiedene
-Zauber zu verwenden.
+Implementieren Sie ein Magie-Konzept. Der Spieler soll in der Lage sein,
+verschiedene Zauber zu verwenden.
 
 Beachten Sie dabei, dass es sich nicht um Zauber handeln soll, die Schaden
 verursachen. Zauber, die Monster anderweitig manipulieren, sind erlaubt.
@@ -35,8 +36,8 @@ Lebenspunkte, Ausdauerpunkte,
 
 In den Vorgaben gibt es bereits ein
 [XP-System](https://github.com/Dungeon-CampusMinden/Dungeon/blob/master/game/src/ecs/systems/XPSystem.java)
-um Erfahrungspunkte zu sammeln und um Level aufzusteigen. Führen Sie eine Codeanalyse
-durch und erklären Sie die Funktionalität.
+um Erfahrungspunkte zu sammeln und um Level aufzusteigen. Führen Sie eine
+Codeanalyse durch und erklären Sie die Funktionalität.
 
 Verbessern Sie beim Levelaufstieg des Helden seine Charakterwerte und lassen Sie ihn
 die oben implementierten Zaubersprüche erlernen.

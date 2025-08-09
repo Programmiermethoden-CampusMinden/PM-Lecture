@@ -193,8 +193,8 @@ Annäherung an fremde API:
     -   Windows: `java -cp .;<jarfile>;<jarfile> <mainclass>`
 
     ::: notes
-    Achtung: Unter Unix (Linux, MacOS) wird ein Doppelpunkt zum Trennen der Jar-Files
-    eingesetzt, unter Windows ein Semikolon!
+    Achtung: Unter Unix (Linux, MacOS) wird ein Doppelpunkt zum Trennen der
+    Jar-Files eingesetzt, unter Windows ein Semikolon!
     :::
 
 Beispiel: `java -classpath .:/home/user/wuppy.jar MyApp`
@@ -206,9 +206,9 @@ Abhängigkeiten manuell aufgelöst, d.h. die Jar-Files werden manuell herunterge
 
 Alle später besprochenen Build-Skripte (Ant, Gradle) beherrschen die automatische
 Auflösung von Abhängigkeiten. Dazu muss im Skript die Abhängigkeit auf geeignete
-Weise beschrieben werden und wird dann beim Kompilieren des Programms automatisch von
-spezialisierten Servern in der im Skript definierten Version heruntergeladen. Dies
-funktioniert auch bei rekursiven Abhängigkeiten ...
+Weise beschrieben werden und wird dann beim Kompilieren des Programms automatisch
+von spezialisierten Servern in der im Skript definierten Version heruntergeladen.
+Dies funktioniert auch bei rekursiven Abhängigkeiten ...
 :::
 
 # Überblick Umgang mit Apache Commons CLI

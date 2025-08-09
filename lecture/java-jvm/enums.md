@@ -11,8 +11,8 @@ zugeordnet, auf die mit `ordinal()` zugegriffen werden kann. Mit der Methode
 Stringrepräsentation einer Konstanten erzeugt werden. Es sind keine Instanzen von
 Enum-Klassen erzeugbar, und die Enum-Konstanten sind implizit `final` und `static`.
 
-Es lassen sich auch komplexe Enumerations analog zu Klassendefinition definieren, die
-eigene Konstruktoren, Felder und Methoden enthalten.
+Es lassen sich auch komplexe Enumerations analog zu Klassendefinition definieren,
+die eigene Konstruktoren, Felder und Methoden enthalten.
 :::
 
 ::: youtube
@@ -97,8 +97,8 @@ public enum Fach {
 -   Gelten in jedem von der Klasse erzeugten Objekt
 -   Unterschiedliche Lebensdauer:
     -   Objektattribute (Instanzvariablen): ab `new` bis zum Garbage Collector
-    -   Statische Variablen: Laufzeitumgebung (JVM) lädt und initialisiert die Klasse
-        (`static` Attribute existieren, bis die JVM die Klasse entfernt)
+    -   Statische Variablen: Laufzeitumgebung (JVM) lädt und initialisiert die
+        Klasse (`static` Attribute existieren, bis die JVM die Klasse entfernt)
 
 **Methoden**:
 

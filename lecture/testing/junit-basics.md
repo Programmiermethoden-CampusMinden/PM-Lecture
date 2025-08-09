@@ -8,8 +8,8 @@ In JUnit 4 und 5 werden Testmethoden mit Hilfe der Annotation `@Test` ausgezeich
 Über die verschiedenen `assert*()`-Methoden kann das Testergebnis mit dem erwarteten
 Ergebnis verglichen werden und entsprechend ist der Test "grün" oder "rot". Mit den
 verschiedenen `assume*()`-Methoden kann dagegen geprüft werden, ob eventuelle
-Vorbedingungen für das Ausführen eines Testfalls erfüllt sind - anderenfalls wird der
-Testfall dann übersprungen.
+Vorbedingungen für das Ausführen eines Testfalls erfüllt sind - anderenfalls wird
+der Testfall dann übersprungen.
 
 Mit Hilfe von `@Before` und `@After` können Methoden gekennzeichnet werden, die
 jeweils vor jeder Testmethode und nach jeder Testmethode aufgerufen werden. Damit
@@ -308,11 +308,11 @@ eine Testklasse in JUnit 4 folgende Bedingungen erfüllen:
     dieser Collection ein Array mit den Parametern für einen Durchlauf der
     Testmethoden ist.
 3.  Die Parameter müssen gesetzt werden. Dafür gibt es zwei Varianten:
-    a)  Für jeden Parameter gibt es ein öffentliches Attribut. Diese Attribute müssen
-        mit der Annotation `@Parameter` markiert sein und können in den Testmethoden
-        normal genutzt werden. JUnit sorgt dafür, dass für jeden Eintrag in der
-        Collection aus der statischen `@Parameters`-Methode diese Felder gesetzt
-        werden und die Testmethoden aufgerufen werden.
+    a)  Für jeden Parameter gibt es ein öffentliches Attribut. Diese Attribute
+        müssen mit der Annotation `@Parameter` markiert sein und können in den
+        Testmethoden normal genutzt werden. JUnit sorgt dafür, dass für jeden
+        Eintrag in der Collection aus der statischen `@Parameters`-Methode diese
+        Felder gesetzt werden und die Testmethoden aufgerufen werden.
     b)  Alternativ gibt es einen Konstruktor, der diese Werte setzt. Die Anzahl der
         Parameter im Konstruktor muss dabei exakt der Anzahl (und Reihenfolge) der
         Werte in jedem Array in der von der statischen `@Parameters`-Methode
@@ -393,8 +393,8 @@ void testWuppie(String candidate) {
 Alternativ lassen sich als Parameterquelle u.a. Aufzählungen (`@EnumSource`) oder
 Methoden (`@MethodSource`) angeben.
 
-*Hinweis*: Parametrisierte Tests werden in JUnit 5 derzeit noch als "*experimentell*"
-angesehen!
+*Hinweis*: Parametrisierte Tests werden in JUnit 5 derzeit noch als
+"*experimentell*" angesehen!
 
 [Beispiel: junit5.TestValueSource, junit5.TestMethodSource]{.ex
 href="https://github.com/Programmiermethoden-CampusMinden/PM-Lecture/tree/master/markdown/testing/src/junit5/"}
@@ -442,15 +442,15 @@ public class MyTestSuite5 {
 ```
 
 Zusätzlich kann man beispielsweise mit `@IncludeTags` oder `@ExcludeTags`
-Testmethoden mit bestimmten Tags einbinden oder ausschließen. Beispiel: Schließe alle
-Tests mit Tag "develop" aus: `@ExcludeTags("develop")`. Dabei wird an den
+Testmethoden mit bestimmten Tags einbinden oder ausschließen. Beispiel: Schließe
+alle Tests mit Tag "develop" aus: `@ExcludeTags("develop")`. Dabei wird an den
 Testmethoden zusätzlich das Tag `@Tag` verwendet, etwas `@Tag("develop")`.
 
 **Achtung**: Laut der offiziellen Dokumentation [(Abschnitt "4.4.4. Test
 Suite")](https://junit.org/junit5/docs/current/user-guide/#running-tests-junit-platform-runner-test-suite)
 gilt zumindest bei der Selection über `@SelectPackages` der Zwang zu einer
-Namenskonvention: Es werden dabei nur Klassen gefunden, deren Name mit `Test` beginnt
-oder endet! Weiterhin werden Testsuites mit der Annotation
+Namenskonvention: Es werden dabei nur Klassen gefunden, deren Name mit `Test`
+beginnt oder endet! Weiterhin werden Testsuites mit der Annotation
 `@RunWith(JUnitPlatform.class)` **nicht** auf der "JUnit 5"-Plattform ausgeführt,
 sondern mit der JUnit 4-Infrastuktur!
 :::
@@ -510,15 +510,15 @@ funktioniert.
 
 4.  Schreiben Sie eine Testmethode `testRemoveObject()`. Entfernen Sie ein
     vorhandenes Element (über die Referenz auf das Objekt) aus dem Testobjekt und
-    prüfen Sie mit einer passenden `assert*`-Methode, ob die Liste nach dem Entfernen
-    den gewünschten Zustand hat: Die Liste darf nur noch das verbleibende Element
-    enthalten.
+    prüfen Sie mit einer passenden `assert*`-Methode, ob die Liste nach dem
+    Entfernen den gewünschten Zustand hat: Die Liste darf nur noch das verbleibende
+    Element enthalten.
 
-5.  Schreiben Sie eine Testmethode `testRemoveIndex()`. Entfernen Sie ein vorhandenes
-    Element über dessen *Index* in der Liste und prüfen Sie mit einer passenden
-    `assert*`-Methode, ob die Liste nach dem Entfernen den gewünschten Zustand hat:
-    Die Liste darf nur noch das verbleibende Element enthalten. (Nutzen Sie zum
-    Entfernen die `remove(int)`-Methode der Liste.)
+5.  Schreiben Sie eine Testmethode `testRemoveIndex()`. Entfernen Sie ein
+    vorhandenes Element über dessen *Index* in der Liste und prüfen Sie mit einer
+    passenden `assert*`-Methode, ob die Liste nach dem Entfernen den gewünschten
+    Zustand hat: Die Liste darf nur noch das verbleibende Element enthalten. (Nutzen
+    Sie zum Entfernen die `remove(int)`-Methode der Liste.)
 
 6.  Schreiben Sie zusätzlich einen **parametrisierten JUnit-Test** für die folgende
     Klasse:
